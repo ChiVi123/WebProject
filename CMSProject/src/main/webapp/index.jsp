@@ -1,5 +1,8 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <html>
+<head>
+</head>
 <body>
-<h2>Hello World!</h2>
+	<tiles:insertDefinition name="home"></tiles:insertDefinition>
 </body>
 </html>

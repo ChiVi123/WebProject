@@ -35,11 +35,12 @@ header {
 aside {
 	float: left;
 	width: 20%;
+	height: 100%;
 	min-height: 500px;
 }
 
 section {
-	float: right;
+	float: left;
 	width: 80%;
 	min-height: 500px;
 }

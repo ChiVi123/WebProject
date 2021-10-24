@@ -8,6 +8,6 @@
 <%-- <link rel="stylesheet" href="<c:url value="/views/AddEmployee.css"/>" /> --%>
 </head>
 <body>
-
+	<p>View Content</p>
 </body>
 </html>

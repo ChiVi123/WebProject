@@ -6,7 +6,7 @@
   <definition name="home" template="/layout/home.jsp">
     <put-attribute name="title" value="Home page" />
     <put-attribute name="header" value="/layout/header.jsp" />
-    <put-attribute name="navigation" value="/layout/navigation.jsp" />
+    <put-attribute name="nav-bar" value="/layout/nav-bar.jsp" />
     <put-attribute name="body" value="/views/view-content.jsp" />    
   </definition>
   

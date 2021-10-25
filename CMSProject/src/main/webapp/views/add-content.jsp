@@ -8,39 +8,37 @@
 <link rel="stylesheet" href="<c:url value="/views/AddContent.css"/>" />
 </head>
 <body>
-	<!-- <div id="formAddContent">
+	<div id="formAddContent">
 		<div id="title">Add Content</div>
-		horizontal line
+		<!-- horizontal line -->
 		<hr>
 		<div id="wrapper">
 			<div id="subTitle">Add Content Elements</div>
 			<div id="inputContent">
-				Input Title
+				<!-- Input Title -->
 				<div class="item">
 					<label for="titles">Title</label> <input type="text" name="titles"
 						placeholder="Enter the title" size="50">
 				</div>
-				Input Brief
+				<!-- Input Brief -->
 				<div class="item">
 					<label for="brief">Brief</label>
 					<textarea name="brief" id="" cols="50" rows="4"></textarea>
 				</div>
-				Input Content
+				<!-- Input Content -->
 				<div class="item">
 					<label for="content">Content</label>
-					<textarea name="content" id="" cols="50" rows="8"></textarea>
+					<textarea name="content" id="" cols="50" rows="6"></textarea>
 				</div>
-				Button
+				<!-- Button -->
 				<div class="item">
-					Submit All Field
+					<!-- Submit All Field -->
 					<button>Submit Button</button>
-					Clear Character All Field
+					<!-- Clear Character All Field -->
 					<button>Reset Button</button>
 				</div>
-
 			</div>
 		</div>
-	</div> -->
-	<div id="title">Add Content</div>
+	</div>
 </body>
 </html>

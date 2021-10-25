@@ -24,7 +24,7 @@
 				</a></li>
 				<!-- End: Edit Profile -->
 				<!-- Begin: Logout -->
-				<li><a href="#"> <i class="fas fa-sign-out-alt"></i> Logout
+				<li><a href="home.tiles"> <i class="fas fa-sign-out-alt"></i> Logout
 				</a></li>
 				<!-- End: Logout -->
 			</ul>

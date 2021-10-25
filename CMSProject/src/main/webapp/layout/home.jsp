@@ -22,7 +22,9 @@ html {
 }
 
 header {
-	
+	width: 100%;
+	position: fixed;
+	top: 0;
 }
 
 /* Clear floats after the columns */
@@ -34,15 +36,18 @@ header {
 
 aside {
 	float: left;
+	position: fixed;
+	top: 46px;
 	width: 20%;
 	height: 100%;
-	min-height: 500px;
+	background-color: var(--theme-header-navbar);
 }
 
 section {
 	float: left;
 	width: 80%;
-	min-height: 500px;
+	margin-top: 46px;
+	margin-left: 20%;
 }
 </style>
 </head>

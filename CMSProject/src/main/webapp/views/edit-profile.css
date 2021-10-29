@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+.index
+{
+    font-size: 30px;
+}
+.btn-space {
+    margin-right: 10px;
+    background-color: white ;
+   width: 20%;
+    text-align: center;
+}
+
+.form-group{
+   margin-top: 15px;
+   width: 80%;
+  
+}
+.labeltext
+{
+  
+    margin: 1px 1px 1px;
+    font-weight: 700;
+}
+.labelelement
+{
+    padding-left: -5px;
+    margin: 1px 1px 1px;
+}
+.formEdit
+{
+    margin-top: 100px;
+    margin-left: 200px;
+    margin-right:50px;
+  
+  
+}
+.resizeText{
+    width: 90%;
+}
+.form-control
+{
+    width: 80%;
+}
+.mainFormElement
+{ 
+    padding: 1em;
+    background-color: whitesmoke;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px 10px 0px 0px;
+    border-color:gray;
+}
+.form-element
+{
+    padding: 1em;
+    border-width: 1px;
+    border: gray;
+   border-top-width:0;
+    border-style: solid;
+    border-radius: 0px 0px 10px 10px;
+
+}
+.formEdit
+{
+    width: 60%;
+ 
+}

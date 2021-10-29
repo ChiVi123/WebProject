@@ -20,7 +20,7 @@
 		<input class="email" type="password" placeholder="Re Password">
 		<br>
 		<button>Register</button>
-		<a href="login.jsp" >Click here to Login</a>
+		<a href="index.jsp" >Click here to Login</a>
 	</div>
 </body>
 </html>

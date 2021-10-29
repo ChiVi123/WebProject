@@ -19,7 +19,7 @@
 				<i class="fas fa-search"></i>
 			</button>
 		</div>
-		<a href="#"> <i class="fontContent bi bi-table"></i> View Contents
+		<a href="home.tiles"> <i class="fontContent bi bi-table"></i> View Contents
 		</a> <a href="add-content.tiles"> <i class="fontContent fas fa-edit"></i>
 			Form Content
 		</a>

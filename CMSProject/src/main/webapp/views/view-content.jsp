@@ -13,7 +13,6 @@
 		<font size="3px" style="margin-left:10px">View content list</font>
 		<hr>
 		<table>
-		<tr>
 			<tr>
 				<th style="width:3%">#</th>
 				<th align="left" style="width:15%">Title</th>

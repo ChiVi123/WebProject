@@ -24,7 +24,7 @@
 		<br>
 		<button>Login</button>
 		<br>
-		<a href="register.tiles" >Click here to Register</a>
+		<a href="register.jsp">Click here to Register</a>
 		</form>
 	</div>
 </body>

@@ -24,6 +24,7 @@
 
 #nav:hover {
 	background-color: var(--hover-color);
+	cursor: pointer;
 }
 
 #nav li {

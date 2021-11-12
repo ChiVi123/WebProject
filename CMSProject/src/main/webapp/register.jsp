@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="<c:url value="/Register.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/css/Register.css"/>" />
 </head>
 <body>
 	<div class="register">

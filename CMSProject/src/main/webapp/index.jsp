@@ -1,9 +1,10 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-	<link rel="stylesheet" type="text/css" href="Login.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/Login.css"/>" />
 </head>
 <body>
 	<div class="login">

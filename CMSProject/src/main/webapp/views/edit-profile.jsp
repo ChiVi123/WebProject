@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="<c:url value="/views/edit-profile.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/css/edit-profile.css"/>" />
 </head>
 <body>
 <body>

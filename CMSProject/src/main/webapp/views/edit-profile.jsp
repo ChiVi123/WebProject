@@ -41,8 +41,8 @@
 				</div>
 
 				<div class="form-group">
-					<label class="labeltext">Email</label> <br> <input
-						type="Email" class="form-control" /> <span class="text-danger"></span>
+			   <label class="labeltext">Email</label> <br>  <p
+						 class="emailinput" />yourgmail</p> <span class="text-danger"></span>
 				</div>
 				<div class="form-group">
 					<label class="labeltext">Phone </label> <br> <input size="50"
@@ -51,7 +51,7 @@
 				</div>
 				<div class="form-group">
 					<label class="labeltext"> Description </label> <br>
-					<textarea class="resizeText" name="description" cols="50" rows="9"
+					<textarea class="form-control" name="description" cols="50" rows="6"
 						autofocus> </textarea>
 					<span class="text-danger"> </span>
 				</div>

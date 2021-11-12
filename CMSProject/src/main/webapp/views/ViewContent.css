@@ -56,11 +56,25 @@
   background-color: #FFA100;
 }
 h1{
-	padding-left: 40px;
+	margin-top: 20px;
 	color: #000000;
 }
+#formViewContent {
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-right: 20px;
+}
+#subTitle {
+	background-color: #dee0e3;
+	line-height: 44px;
+	padding-left: 10px;
+	font-size: 1em;
+	font-weight: lighter;
+}
 table {
+	margin-top: 15px;
 	margin-left: 15px;
+	margin-bottom: 20px;
 	border: 1px solid #8e8e8e;
 	width: auto;
 	margin-right: 15px;
@@ -72,13 +86,12 @@ th, td {
 	/* border-collapse: separate; */
 }
 .khung{
-	width: 80%;
+	width: 100%;
 	height: 75%;
 	/*background-color: green;*/
-	margin-left: 50px;
 	border:1px solid grey;
 	border-radius: 3px;
 	background-color: white;
-  	padding-bottom: 30px;
-  	padding-top: 7px;
+  	margin-bottom: 30px;
+  	margin-top: 7px;
 }

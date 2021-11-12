@@ -8,17 +8,20 @@
 <link rel="stylesheet" href="<c:url value="/views/ViewContent.css"/>" />
 </head>
 <body>
+	<div id="formViewContent">
 	<h1>View Content</h1>
+	<hr style="opacity:0.5">
+	<br>
 	<div class="khung">
-		<font size="3px" style="margin-left:10px">View content list</font>
+		<div style="size:3px" style="margin-left:10px" id=subTitle>View content list</div>
 		<hr>
 		<table>
 			<tr>
-				<th style="width:3%">#</th>
-				<th align="left" style="width:15%">Title</th>
-				<th align="left" style="width:40%">Brief</th>
-				<th align="left" style="width:10%">Created Date</th>
-				<th align="left" style="width:7%">Actions</th>
+				<th style="width:5%">#</th>
+				<th align="left" style="width:25%">Title</th>
+				<th align="left" style="width:50%">Brief</th>
+				<th align="left" style="width:15%">Created Date</th>
+				<th align="left" style="width:15%">Actions</th>
 			</tr>
 			<c:forEach var="table" items="${alluser.rows}">
 				<tr>
@@ -35,8 +38,7 @@
 									href="#">Delete</a>
 							</div>
 						</div></td>
-				</tr>
-			</c:forEach>
+				</tr></c:forEach> 
 		</table>
 		</div>
 		<br>
@@ -59,5 +61,6 @@
     		<i class="fa fa-chevron-right"></i>
   		</a></li>
 		</ul>
+		</div>
 </body>
 </html>

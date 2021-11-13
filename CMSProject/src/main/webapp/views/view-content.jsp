@@ -20,15 +20,14 @@
 				<th style="width:5%">#</th>
 				<th align="left" style="width:25%">Title</th>
 				<th align="left" style="width:50%">Brief</th>
-				<th align="left" style="width:15%">Created Date</th>
-				<th align="left" style="width:15%">Actions</th>
+				<th align="left" style="width:10%">Created Date</th>
+				<th align="left" style="width:20%">Actions</th>
 			</tr>
-			<c:forEach var="table" items="${alluser.rows}">
 				<tr>
-					<td><c:out value="${table.ID}"></c:out></td>
-					<td><c:out value="${table.Title}"></c:out></td>
-					<td><c:out value="${table.Brief}"></c:out></td>
-					<td><c:out value="${table.CreatedDate}"></c:out></td>
+					<td>123</td>
+					<td>hello</td>
+					<td>chao</td>
+					<td>sang</td>
 					<td><div class="group-flex">
 							<div>
 								<a class="link"
@@ -38,7 +37,7 @@
 									href="#">Delete</a>
 							</div>
 						</div></td>
-				</tr></c:forEach> 
+				</tr>
 		</table>
 		</div>
 		<br>

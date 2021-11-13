@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="<c:url value="/views/ViewContent.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/css/ViewContent.css"/>" />
 </head>
 <body>
 	<div id="formViewContent">

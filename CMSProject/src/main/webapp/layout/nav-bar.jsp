@@ -9,7 +9,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-<link rel="stylesheet" href="<c:url value="/layout/NavBar.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/css/NavBar.css"/>" />
 </head>
 <body>
 	<div id="navBar">

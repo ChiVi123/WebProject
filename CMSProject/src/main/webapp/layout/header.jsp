@@ -18,12 +18,18 @@
 				<i class="fas fa-sort-down"></i>
 			</button>
 			<ul id="subNav" class="dropdown-content">
-				<li><a href="edit-profile.tiles"> <i class="fas fa-user"></i>
-						User Profile
-				</a></li>
-				<li><a href="index.jsp"> <i class="fas fa-sign-out-alt"></i>
+				<li>
+					<a href="edit-profile.tiles"> 
+						<i class="fas fa-user"></i>
+							User Profile
+					</a>
+				</li>
+				<li>
+					<a href="index.jsp"> 
+					<i class="fas fa-sign-out-alt"></i>
 						Logout
-				</a></li>
+					</a>
+				</li>
 			</ul>
 		</ul>
 	</div>

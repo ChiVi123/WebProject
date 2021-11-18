@@ -12,6 +12,26 @@ public class Content {
 	private String Sort;
 	private int AuthorId;
 
+	public Content() {
+	}
+
+	public Content(String title, String brief, String content, int authorid) {
+		super();
+		this.Title = title;
+		this.Brief = brief;
+		this.Content = content;
+		this.AuthorId = authorid;
+	}
+
+	public Content(int id, String title, String brief, String content, int authorid) {
+		super();
+		this.id = id;
+		this.Title = title;
+		this.Brief = brief;
+		this.Content = content;
+		this.AuthorId = authorid;
+	}
+
 	public int getId() {
 		return id;
 	}

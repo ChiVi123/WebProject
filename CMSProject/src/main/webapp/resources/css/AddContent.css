@@ -1,13 +1,12 @@
 @charset "ISO-8859-1";
 
-#title {
-	font-size: 20px;
-}
-
-#formAddContent {
-	
+#main-content {
 	padding-top: 10px;
 	padding-left: 20px;
+}
+
+#primary-title {
+	font-size: 20px;
 }
 
 hr {
@@ -15,19 +14,19 @@ hr {
 	margin: 20px 0px;
 }
 
-#wrapper {
+.form {
 	/* width: 100%; */
 	font-size: 16px;
 }
 
-#formAddContent #wrapper {
+#main-content .form {
 	border: var(--border-color);
 	border-style: solid;
 	border-width: 1.5px;
 	border-radius: 3px;
 }
 
-#subTitle {
+#sub-title {
 	background-color: whitesmoke;
 	line-height: 44px;
 	padding-left: 10px;
@@ -35,7 +34,7 @@ hr {
 	font-weight: lighter;
 }
 
-#inputContent {
+#input-content {
 	padding-left: 10px;
 	padding-top: 16px;
 }
@@ -45,38 +44,37 @@ hr {
 	font-size: 1em;
 }
 
-.item label {
+.item .form-label {
 	display: block;
 	padding-bottom: 10px;
 	font-weight: 600;
 }
 
-.item input {
+.form-message {
+	display: block;
+}
+
+.item.invalid .form-control {
+  border-color: #f33a58;
+}
+
+.item.invalid .form-message {
+  color: #f33a58;
+}
+
+.form-control {
 	width: 80%;
-	border: var(--border-color);
-	border-width: 1.5px;
-	border-style: solid;
-	border-radius: 3px;
 	font-size: 1.2rem;
+}
+
+.form-control,.item-button{
+	border: 1.5px solid var(--border-color);
+	border-radius: 3px;
 	padding: 10px;
 }
 
-.item textarea {
-	width: 80%;
-	border: var(--border-color);
-	border-width: 1.5px;
-	border-style: solid;
-	border-radius: 3px;
-	font-size: 1.2rem;
-}
-
-.item button {
+.item-button {
 	background-color: white;
 	font-size: 0.8rem;
-	padding: 10px;
-	border: var(--border-color);
-	border-width: 1.5px;
-	border-style: solid;
-	border-radius: 3px;
 	cursor: pointer;
 }

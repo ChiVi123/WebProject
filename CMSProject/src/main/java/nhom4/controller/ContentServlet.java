@@ -18,6 +18,7 @@ import nhom4.utilities.Common;
 /**
  * Servlet implementation class ContentServlet
  */
+/* @WebServlet(name = "ContentServlet", value = "/Content/*") */
 @WebServlet("/")
 public class ContentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -93,9 +94,7 @@ public class ContentServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println(id);
 		Content existingContent = contentDAO.selectContent(id);
-		System.out.println(existingContent.getTitle());
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.CONTENT_TILES);
 		request.setAttribute("content", existingContent);
 		dispatcher.forward(request, response);

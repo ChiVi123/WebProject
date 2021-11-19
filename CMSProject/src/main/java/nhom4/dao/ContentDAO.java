@@ -12,19 +12,19 @@ import nhom4.dao.ConnectDB;
 
 public class ContentDAO {
 	private static final String INSERT_CONTENT = "INSERT INTO Content"
-			+ "  (Title, Brief, Content, CreateDate, Sort, AuthorId) VALUES " + " (?, ?, ?, now(), ?, ?);";
-
-	private static final String SELECT_CONTENT = "select id, Title, Brief, Content, CreateDate, UpdateTime, Sort, AuthorId from Content where id =?";
-	private static final String SELECT_CONTENTS = "select * from Content";
-	private static final String DELETE_CONTENT = "delete from Content where id = ?;";
-	private static final String UPDATE_CONTENT = "update Content set Title = ?, Brief= ?, Content =?, UpdateTime =?, Sort =? where id = ?;";
+			+ "  (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES " + " (?, ?, ?, now(), now(), ?);";
+	private static final String SELECT_CONTENT = "SELECT * FROM Content WHERE id = ?;";
+	private static final String SELECT_CONTENTS = "SELECT * FROM Content;";
+	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ? AND AuthorId = ?;";
+	private static final String UPDATE_CONTENT = "UPDATE Content "
+			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
 
 	public ContentDAO() {
 	}
 
 	ConnectDB connect = new ConnectDB();
 
-	public void insertCONTENT(Content content) throws SQLException {
+	public void insertContent(Content content) throws SQLException {
 		System.out.println(INSERT_CONTENT);
 		// try-with-resource statement will auto close the connection.
 		try (Connection connection = connect.getConnection();
@@ -32,12 +32,7 @@ public class ContentDAO {
 			statement.setString(1, content.getTitle());
 			statement.setString(2, content.getBrief());
 			statement.setString(3, content.getContent());
-			/*
-			 * preparedStatement.setTimestamp(4, content.getCreateDate());
-			 * preparedStatement.setString(5, content.getUpdateTime());
-			 */
-			statement.setString(5, content.getSort());
-			statement.setInt(6, content.getAuthorId());
+			statement.setInt(4, content.getAuthorId());
 			System.out.println(statement);
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -63,8 +58,8 @@ public class ContentDAO {
 				String brief = rs.getString("Brief");
 				String content = rs.getString("Content");
 				int authorid = rs.getInt("AuthorId");
-
 				select = new Content(id, title, brief, content, authorid);
+				System.out.println("success");
 			}
 		} catch (SQLException e) {
 			connect.printSQLException(e);
@@ -116,10 +111,8 @@ public class ContentDAO {
 			statement.setString(1, content.getTitle());
 			statement.setString(2, content.getBrief());
 			statement.setString(3, content.getContent());
-			/* statement.setString(4, content.getUpdateTime()); */
-			statement.setString(5, content.getSort());
-			statement.setInt(6, content.getId());
-
+			statement.setInt(4, content.getId());
+			statement.setInt(5, content.getAuthorId());
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;

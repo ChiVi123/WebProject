@@ -14,7 +14,7 @@ public class ConnectDB {
 	public static final String JDBC_USER_NAME = "root";
 	public static final String JDBC_PASSWORD = "ef00tb@ll2022";
 
-	public static Connection getConnection() {
+	public Connection getConnection() {
 		Connection connection = null;
 		try {
 			Class.forName(JDBC_DRIVER);
@@ -29,7 +29,7 @@ public class ConnectDB {
 		return connection;
 	}
 
-	public static void printSQLException(SQLException ex) {
+	public void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {
 			if (e instanceof SQLException) {
 				e.printStackTrace(System.err);

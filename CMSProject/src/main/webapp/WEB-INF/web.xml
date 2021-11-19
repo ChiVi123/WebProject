@@ -20,9 +20,36 @@
 		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet
 		</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<description></description>
+		<display-name>ContentServlet</display-name>
+		<servlet-name>ContentServlet</servlet-name>
+		<servlet-class>nhom4.controller.ContentServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>MemberServlet</display-name>
+		<servlet-name>MemberServlet</servlet-name>
+		<servlet-class>nhom4.controller.MemberServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Tiles Dispatch</servlet-name>
 		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ContentServlet</servlet-name>
+		<url-pattern>/ContentServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+        <url-pattern>/resources/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MemberServlet</servlet-name>
+		<url-pattern>/MemberServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

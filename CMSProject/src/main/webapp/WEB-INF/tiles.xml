@@ -16,9 +16,9 @@
     <put-attribute name="body" value="/views/edit-profile.jsp" />
   </definition>
   
-    <!-- Add Content page -->
-  <definition name="add-content" extends="home">
+    <!-- Content page -->
+  <definition name="form-content" extends="home">
     <put-attribute name="title" value="Content" />
-    <put-attribute name="body" value="/views/add-content.jsp" />
+    <put-attribute name="body" value="/views/form-content.jsp" />
   </definition>
 </tiles-definitions>

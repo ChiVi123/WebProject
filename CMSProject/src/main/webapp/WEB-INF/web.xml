@@ -57,7 +57,11 @@
 	</servlet-mapping>
 	
 	<servlet-mapping>
+<<<<<<< HEAD
 		<servlet-name>default</servlet-name>
+=======
+	<servlet-name>default</servlet-name>
+>>>>>>> e2f4cc69bf98df200ea0053d2090dc4e55752f78
         <url-pattern>/resources/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>

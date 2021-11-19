@@ -29,15 +29,15 @@
 
 				<div class="form-group">
 					<label class="labeltext"> First Name</label> <br> <input
-						size="50" maxlength="30" type="Text" class="form-control"
-						name="firstname" placeholder="Enter the first name" /> <span
-						class="text-danger"></span>
+						size="50" type="Text" class="form-control"
+						id="firstname"	name="firstname" placeholder="Enter the first name" /> <span
+						class="text-message"></span>
 				</div>
 				<div class="form-group">
 					<label class="labeltext">Last Name</label> <br> <input
-						size="50" type="text" maxlength="30" class="form-control"
-						name="lastname" placeholder="Enter the last name" /> <span
-						class="text-danger"></span>
+						size="50" type="text"  class="form-control"
+					id="lastname"	name="lastname" placeholder="Enter the last name" /> <span
+						class="text-message"></span>
 				</div>
 
 				<div class="form-group">
@@ -46,27 +46,48 @@
 				</div>
 				<div class="form-group">
 					<label class="labeltext">Phone </label> <br> <input size="50"
-						maxlength="13" type="text" class="form-control" name="phone"
-						placeholder="Enter your phone number" /> <span class="text-danger"></span>
+					 type="text" class="form-control" name="phone" id="phone"
+						placeholder="Enter your phone number" /> 
+						
+						<span class="text-message"></span>
+						
 				</div>
 				<div class="form-group">
 					<label class="labeltext"> Description </label> <br>
-					<textarea class="form-control" name="description" cols="50" rows="6"
+					<textarea class="form-control" id ="description" name="description" cols="50" rows="6"
 						autofocus> </textarea>
-					<span class="text-danger"> </span>
+					<span class="text-message"> </span>
 				</div>
 
 				<div class="form-group">
 					<input type="submit" value="Submit Button" class=" btn-space " />
 					<input type="reset" value="Reset Button" class=" btn-space " />
-
+	               
 				</div>
 
 			</div>
 		</form>
-
-
-
 	</div>
+	<script src="<c:url value="/resources/js/validator.js"/>"></script>
+    <script>
+        Validator({
+            form: "#des",
+            formGroup: ".form-group",
+            errorSelector: ".text-message",
+            rules: [
+                Validator.isRequired("#firstname"),
+                Validator.checkLength("#firstname", 3, 30),
+                Validator.isRequired("#lastname"),
+                Validator.checkLength("#lastname", 3, 30),
+                Validator.isRequired("#phone"),
+                Validator.checkLength("#phone", 9, 13),
+                Validator.isRequired("#description"),
+                Validator.checkLength("#description", 0, 1000),                        
+            ],
+         /*   onSubmit: function (data) {
+                console.log(data);
+            }*/
+        });
+    </script>
 </body>
 </html>

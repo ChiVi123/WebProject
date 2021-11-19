@@ -3,33 +3,33 @@ package nhom4.models;
 import java.time.LocalDateTime;
 
 public class Content {
-	private int id;
-	private String Title;
-	private String Brief;
-	private String Content;
-	private LocalDateTime CreateDate;
-	private LocalDateTime UpdateTime;
-	private String Sort;
-	private int AuthorId;
+	protected int id;
+	protected String title;
+	protected String brief;
+	protected String content;
+	protected LocalDateTime createdate;
+	protected LocalDateTime updatetime;
+	protected String sort;
+	protected int authorid;
 
 	public Content() {
 	}
 
 	public Content(String title, String brief, String content, int authorid) {
 		super();
-		this.Title = title;
-		this.Brief = brief;
-		this.Content = content;
-		this.AuthorId = authorid;
+		this.title = title;
+		this.brief = brief;
+		this.content = content;
+		this.authorid = authorid;
 	}
 
 	public Content(int id, String title, String brief, String content, int authorid) {
 		super();
 		this.id = id;
-		this.Title = title;
-		this.Brief = brief;
-		this.Content = content;
-		this.AuthorId = authorid;
+		this.title = title;
+		this.brief = brief;
+		this.content = content;
+		this.authorid = authorid;
 	}
 
 	public int getId() {
@@ -41,59 +41,59 @@ public class Content {
 	}
 
 	public String getTitle() {
-		return Title;
+		return title;
 	}
 
 	public void setTitle(String title) {
-		Title = title;
+		title = title;
 	}
 
 	public String getBrief() {
-		return Brief;
+		return brief;
 	}
 
 	public void setBrief(String brief) {
-		Brief = brief;
+		brief = brief;
 	}
 
 	public String getContent() {
-		return Content;
+		return content;
 	}
 
 	public void setContent(String content) {
-		Content = content;
+		content = content;
 	}
 
 	public LocalDateTime getCreateDate() {
-		return CreateDate;
+		return createdate;
 	}
 
 	public void setCreateDate(LocalDateTime createDate) {
-		CreateDate = createDate;
+		createdate = createDate;
 	}
 
 	public LocalDateTime getUpdateTime() {
-		return UpdateTime;
+		return updatetime;
 	}
 
 	public void setUpdateTime(LocalDateTime updateTime) {
-		UpdateTime = updateTime;
+		updatetime = updateTime;
 	}
 
 	public String getSort() {
-		return Sort;
+		return sort;
 	}
 
 	public void setSort(String sort) {
-		Sort = sort;
+		this.sort = sort;
 	}
 
 	public int getAuthorId() {
-		return AuthorId;
+		return authorid;
 	}
 
 	public void setAuthorId(int authorId) {
-		AuthorId = authorId;
+		authorid = authorId;
 	}
 
 }

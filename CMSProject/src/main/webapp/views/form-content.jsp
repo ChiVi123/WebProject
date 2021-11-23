@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/Content.css"/>" />
 </head>
@@ -34,7 +34,7 @@
 				<div id="input-content">
 					<c:if test="${content != null}">
 						<!--Input ID -->
-						<input type="hidden" name="id" value="<c:out value='${content.id}' />" />
+						<input type="hidden" name="id" value="<c:out value='${content.id}'/>" />
 						<!--Input AUTHOR ID -->
 						<%-- <input type="hidden" name="id" value="<c:out value='${content.AuthorId}' />" /> --%>
 					</c:if>
@@ -72,7 +72,7 @@
 						
 						<c:if test="${content != null}">
 							<button href="edit" class="item-button">Reset Button</button>
-						</c:if>						
+						</c:if>
 				</div>
 			</form>
 	</div>

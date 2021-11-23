@@ -17,8 +17,7 @@
 
 	<servlet>
 		<servlet-name>Tiles Dispatch</servlet-name>
-		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet
-		</servlet-class>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
 	</servlet>
 	
 	<servlet>
@@ -34,6 +33,13 @@
 		<servlet-name>MemberServlet</servlet-name>
 		<servlet-class>nhom4.controller.MemberServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>SearchServlet</display-name>
+		<servlet-name>SearchServlet</servlet-name>
+		<servlet-class>nhom4.controller.SearchServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Tiles Dispatch</servlet-name>
@@ -46,15 +52,18 @@
 	</servlet-mapping>
 	
 	<servlet-mapping>
-<<<<<<< HEAD
 		<servlet-name>default</servlet-name>
-=======
 	<servlet-name>default</servlet-name>
->>>>>>> e2f4cc69bf98df200ea0053d2090dc4e55752f78
+	<servlet-name>default</servlet-name>
+		<servlet-name>default</servlet-name>
         <url-pattern>/resources/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>MemberServlet</servlet-name>
 		<url-pattern>/MemberServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchServlet</servlet-name>
+		<url-pattern>/SearchServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

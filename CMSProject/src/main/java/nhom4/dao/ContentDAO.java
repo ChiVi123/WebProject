@@ -19,6 +19,8 @@ public class ContentDAO {
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
 
+	// Phan Search Content //
+	/*private static final String SEARCH_CONTENT = "SELECT * FROM Content Where Title  LIKE ?‘K_%_% OR Brief  LIKE ?‘K_%_% OR Content LIKE ?‘K_%_% ’";*/
 	public ContentDAO() {
 	}
 
@@ -59,7 +61,6 @@ public class ContentDAO {
 				String content = rs.getString("Content");
 				int authorid = rs.getInt("AuthorId");
 				select = new Content(id, title, brief, content, authorid);
-				System.out.println("success");
 			}
 		} catch (SQLException e) {
 			connect.printSQLException(e);
@@ -99,6 +100,8 @@ public class ContentDAO {
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_CONTENT);) {
 			statement.setInt(1, id);
+			
+			System.out.println(statement);
 			rowDeleted = statement.executeUpdate() > 0;
 		}
 		return rowDeleted;
@@ -113,6 +116,8 @@ public class ContentDAO {
 			statement.setString(3, content.getContent());
 			statement.setInt(4, content.getId());
 			statement.setInt(5, content.getAuthorId());
+			
+			System.out.println(statement);
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;

@@ -11,37 +11,99 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nhom4.dao.ContentDAO;
 import nhom4.dao.MemberDAO;
 import nhom4.models.Member;
 import nhom4.utilities.Common;
+
 /**
  * Servlet implementation class MemberServlet
  */
 public class MemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MemberServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private MemberDAO memberDAO;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public MemberServlet() {
+		super();
+		memberDAO = new MemberDAO();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String action = request.getServletPath();
+		System.out.println(action);
+		try {
+			switch (action) {
+			case "/editnewmember":
+				showEditForm(request, response);
+				break;
+			case "/updatemember":
+				System.out.println("updateMember");
+				updateMember(request, response);
+				break;
+			}
+		} catch (SQLException ex) {
+			throw new ServletException(ex);
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+
+	private void showForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
+		dispatcher.forward(request, response);
+	}
+
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Member existingMember = memberDAO.selectMember(id);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
+		request.setAttribute("member", existingMember);
+		dispatcher.forward(request, response);
+	}
+
+	private void updateMember(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
+		String phone = request.getParameter("phone");
+		String des = request.getParameter("description");
+
+		System.out.println(id);
+		System.out.println(firstname);
+		System.out.println(lastname);
+		System.out.println(phone);
+		System.out.println(des);
+
+		/*
+		 * int authorid = Integer.parseInt(request.getParameter("authorid"));
+		 * 
+		 * Content book = new Content(id, title, brief, content, authorid);
+		 */
+		Member editMember = new Member(id, firstname, lastname, phone, des);
+		memberDAO.updateMember(editMember);
+		response.sendRedirect("home");
 	}
 
 }

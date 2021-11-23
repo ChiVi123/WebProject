@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="<c:url value="/resources/css/Register.css"/>" />
 </head>
 <body>
@@ -13,6 +13,7 @@
 		<br>
 		<div class="form-group">
 		<input id="user" class="user" type="text" placeholder="User name">
+		<span class="text-message"></span>
 		</div>
 		<br>
 		<div class="form-group">
@@ -44,7 +45,7 @@
                 Validator.isRequired("#user"),
                 Validator.checkLength("#user", 3, 30),
                 Validator.isRequired("#email"),
-                Validator.checkLength("#email", 5, NA),
+                Validator.checkLength("#email", 5),
                 Validator.isRequired("#pass"),
                 Validator.checkLength("#pass", 8, 30),
                 Validator.isRequired("#repass"),

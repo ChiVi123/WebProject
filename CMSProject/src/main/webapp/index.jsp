@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Login</title>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/Login.css"/>" />
 </head>
@@ -45,6 +45,7 @@
             rules: [
                 Validator.isRequired("#email"),
                 Validator.checkLength("#email", 5, 50),
+                Validator.isEmail("#email","error"),
                 Validator.isRequired("#pass"),
                 Validator.checkLength("#pass", 8, 30),                     
             ],

@@ -10,6 +10,21 @@
 	margin: 0 auto;
 	background-color: white;
 }
+.form-group {
+	margin-top: 15px;
+	width: 80%;
+}
+.text-message {
+	
+	display: block;
+}
+.form-group.invalid .form-control {
+  border-color: red;
+}
+
+.form-group.invalid .text-message {
+  color: red;
+}
 h3{
 	float: left;
 	padding-left: 40px;

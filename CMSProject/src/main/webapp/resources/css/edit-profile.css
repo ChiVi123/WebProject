@@ -3,6 +3,18 @@
 .index {
 	font-size: 30px;
 }
+
+.text-message {
+	
+	display: block;
+}
+.form-group.invalid .form-control {
+  border-color: red;
+}
+
+.form-group.invalid .text-message {
+  color: red;
+}
 .emailinput
 {
 	width: 80%;

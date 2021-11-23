@@ -13,12 +13,15 @@
 </head>
 <body>
 	<div id="navBar">
+	<form id= "itemsearch" action="updatemember" method="post">
 		<div id="wrapperSearch">
 			<input type="text" name="search" id="" placeholder="Search...">
 			<button>
 				<i class="fas fa-search"></i>
-			</button>
+			</button type ="submit">
 		</div>
+		</form>
+		
 		<a href="home"> <i class="fontContent bi bi-table"></i> View Contents
 		</a> <a href="new"> <i class="fontContent fas fa-edit"></i>
 			Form Content

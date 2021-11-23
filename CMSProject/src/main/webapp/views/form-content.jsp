@@ -34,7 +34,7 @@
 				<div id="input-content">
 					<c:if test="${content != null}">
 						<!--Input ID -->
-						<input type="hidden" name="id" value="<c:out value='${content.id}' />" />
+						<input type="hidden" name="id" value="<c:out value='${content.id}'/>" />
 						<!--Input AUTHOR ID -->
 						<%-- <input type="hidden" name="id" value="<c:out value='${content.AuthorId}' />" /> --%>
 					</c:if>

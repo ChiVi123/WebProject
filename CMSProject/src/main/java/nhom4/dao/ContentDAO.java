@@ -19,6 +19,8 @@ public class ContentDAO {
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
 
+	// Phan Search Content //
+	/*private static final String SEARCH_CONTENT = "SELECT * FROM Content Where Title  LIKE ?‘K_%_% OR Brief  LIKE ?‘K_%_% OR Content LIKE ?‘K_%_% ’";*/
 	public ContentDAO() {
 	}
 

@@ -13,7 +13,7 @@ public class MemberDAO {
 	private static final String UPDATE_MEMBER = "UPDATE Member "
 			+ " SET Firstname = ?, Lastname = ?, Phone = ?, Description = ? WHERE id = ?;";
 	private static final String SELECT_MEMBER = "SELECT Firstname,Lastname, Email, Phone, Description  FROM Member WHERE id = ?;";
-	private static final String SELECT_MEMBERLOGIN ="SELECT Username, Password FROM Member;";
+	private static final String SELECT_MEMBERLOGIN ="SELECT Email, Password FROM member";
 
 	public MemberDAO() {
 
@@ -71,6 +71,16 @@ public class MemberDAO {
 
 	ConnectDB connect = new ConnectDB();
 
+	public Member login(String email, String pass) {
+		try (Connection connection = connect.getConnection();
+		PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERLOGIN);) {
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				return new Member(rs.getString(1), rs.getString(2));
+				}}catch (Exception e) {}
+		return null;
+		
+	}
 	public boolean updateMember(Member member) throws SQLException {
 		boolean rowUpdated;
 

@@ -14,14 +14,8 @@ public class ConnectDB {
 	public static final String JDBC_URL = "jdbc:mysql://localhost:3306/webfinal?useSSL=false";
 	public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String JDBC_USER_NAME = "root";
-<<<<<<< HEAD
-	public static final String JDBC_PASSWORD = "ef00tb@ll2022";
-
-=======
+	//public static final String JDBC_PASSWORD = "ef00tb@ll2022";
 	public static final String JDBC_PASSWORD = "sang0375431663";
-	
-	
->>>>>>> aec321ed8f20734a522178908c2a301a679071be
 	public Connection getConnection() {
 		Connection connection = null;
 		try {

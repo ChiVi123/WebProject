@@ -32,15 +32,15 @@
                                         <c:out value="${content.id}" />
                                     </td>
                                     <td>
-                                        <c:out value="${content.Title}" />
+                                        <c:out value="${content.title}" />
                                     </td>
                                     <td>
-                                        <c:out value="${content.Brief}" />
+                                        <c:out value="${content.brief}" />
                                     </td>
                                     <td>
-                                        <c:out value="${content.CreateDate}" />
-                                    </td>
-					<td><div class="group-flex">
+                                        <c:out value="${content.createdate}" />
+                                    </td>                                
+							<td><div class="group-flex">
 							<div>
 								<a class="link" href="#">Edit</a> &emsp; <a class="link"
 									href="#">Delete</a>

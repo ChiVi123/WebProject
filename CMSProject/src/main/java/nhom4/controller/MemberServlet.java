@@ -15,6 +15,7 @@ import nhom4.dao.ContentDAO;
 import nhom4.dao.MemberDAO;
 import nhom4.models.Member;
 import nhom4.utilities.Common;
+import nhom4.models.MemberLogin;
 
 /**
  * Servlet implementation class MemberServlet
@@ -62,6 +63,19 @@ public class MemberServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		String email= request.getParameter("email");
+		String pass= request.getParameter("pass");
+		MemberDAO member= new MemberDAO();
+		Member a= member.login(email, pass);
+		if(a == null)
+		{
+			request.setAttribute("mess", "Wrong email or password");
+			request.getRequestDispatcher("index.titles").forward(request, response);
+		}else
+		{
+			request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
+		}
+		
 	}
 
 	private void showForm(HttpServletRequest request, HttpServletResponse response)

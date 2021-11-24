@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="login">
-		<form id="des" action="MemberServlet" id="login" method="post">
+		<form id="des" action="login" id="login" method="post">
 		<div class= "style">Please Sign In</div>
 		<br>
 		<br>

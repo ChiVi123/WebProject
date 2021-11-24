@@ -8,30 +8,32 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/Register.css"/>" />
 </head>
 <body>
-	<div id="des" class="register">
+	<div class="register">
+		<form id="des" action="register" method="post">
 		<div class= "style">Register</div>
 		<br>
 		<br>
 		<hr>
 		<div class="form-group">
-		<input id="user" class="user" type="text" placeholder="User name">
+		<input id="user" class="user" name="user" type="text" placeholder="User name">
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
-		<input id="email" class="email" type="email" placeholder="E-mail">
+		<input id="email" class="email" name="email" type="email" placeholder="E-mail">
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
-		<input id="pass" class="pass" type="password" placeholder="Password">
+		<input id="pass" class="pass" name="pass" type="password" placeholder="Password">
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
-		<input id="repass" class="email" type="password" placeholder="Re Password">
+		<input id="repass" class="email" name="repass" type="password" placeholder="Re Password">
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
 		<button>Register</button></div>
 		<a href="index.jsp" >Click here to Login</a>
+		</form>
 		<br>
 		<br>
 		<br>
@@ -46,7 +48,7 @@
                 Validator.isRequired("#user"),
                 Validator.checkLength("#user", 3, 30),
                 Validator.isRequired("#email"),
-                Validator.checkLength("#email", 5),
+                Validator.checkLength("#email", 5, NA),
                 Validator.isRequired("#pass"),
                 Validator.checkLength("#pass", 8, 30),
                 Validator.isRequired("#repass"),

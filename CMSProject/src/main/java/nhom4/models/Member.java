@@ -16,6 +16,13 @@ public class Member {
 	
 
 	public Member(String email, String pass) {
+		super();
+		this.Email = email;
+		this.Password=pass;
+	}
+	public Member(String user, String email, String pass) {
+		super();
+		this.Username=user;
 		this.Email = email;
 		this.Password=pass;
 	}

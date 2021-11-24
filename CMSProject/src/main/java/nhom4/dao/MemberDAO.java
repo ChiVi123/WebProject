@@ -13,8 +13,10 @@ public class MemberDAO {
 	private static final String UPDATE_MEMBER = "UPDATE Member "
 			+ " SET Firstname = ?, Lastname = ?, Phone = ?, Description = ? WHERE id = ?;";
 	private static final String SELECT_MEMBER = "SELECT Firstname,Lastname, Email, Phone, Description  FROM Member WHERE id = ?;";
-	private static final String SELECT_MEMBERLOGIN ="SELECT Username, Password FROM Member;";
-
+	private static final String SELECT_MEMBERLOGIN ="SELECT Email, Password FROM member";
+	private static final String SELECT_MEMBERCHECK ="SELECT * FROM member WHERE [Email]=?;";
+	private static final String INSERT_MEMBER = "INSERT INTO member"
+			+ "  (Username, Email, Password, CreateDate, UpdateTime) VALUES " + " (?, ?, ?, now(), now());";
 	public MemberDAO() {
 
 	}
@@ -72,6 +74,36 @@ public class MemberDAO {
 
 	ConnectDB connect = new ConnectDB();
 
+	public Member checkMember (String email) {
+		try (Connection connection = connect.getConnection();
+			PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERCHECK);) {
+				ResultSet rs = statement.executeQuery();
+				while (rs.next()) {
+					return new Member(rs.getString(1), rs.getString(2));
+					}}catch (Exception e) {}
+			return null;
+	}
+	public Member login(String email, String pass) {
+		try (Connection connection = connect.getConnection();
+		PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERLOGIN);) {
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				return new Member(rs.getString(1), rs.getString(2));
+				}}catch (Exception e) {}
+		return null;
+	}
+	public void register(Member member) throws SQLException {
+				try (Connection connection = connect.getConnection();
+						PreparedStatement statement = connection.prepareStatement(INSERT_MEMBER)) {
+					statement.setString(1, member.getUsername());
+					statement.setString(2, member.getEmail());
+					statement.setString(3, member.getPassword());
+					System.out.println(statement);
+					statement.executeUpdate();
+				} catch (SQLException e) {
+					connect.printSQLException(e);
+				}
+	}
 	public boolean updateMember(Member member) throws SQLException {
 		boolean rowUpdated;
 

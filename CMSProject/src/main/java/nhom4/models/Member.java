@@ -15,7 +15,17 @@ public class Member {
 	private LocalDateTime UpdateTime;
 	
 
-	public Member() {}
+	public Member(String email, String pass) {
+		super();
+		this.Email = email;
+		this.Password=pass;
+	}
+	public Member(String user, String email, String pass) {
+		super();
+		this.Username=user;
+		this.Email = email;
+		this.Password=pass;
+	}
 	public Member(int id, String firstname, String lastname, String phone, String description) {
 		super();
 		this.id = id;

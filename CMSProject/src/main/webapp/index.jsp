@@ -8,12 +8,13 @@
 </head>
 <body>
 	<div class="login">
-		<form id="des" action="home.tiles" id="login" method="post">
+		<form id="des" action="login" id="login" method="post">
 		<div class= "style">Please Sign In</div>
 		<br>
 		<br>
 		<br>
 		<hr>
+		<p class= "error">${mess}</p>
 		<div class="form-group">
 		<input id="email" class="email" name="email" type="email" placeholder="E-mail">			
 		<span class="text-message"></span>

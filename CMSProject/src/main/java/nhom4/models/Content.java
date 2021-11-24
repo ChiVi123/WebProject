@@ -7,12 +7,21 @@ public class Content {
 	protected String title;
 	protected String brief;
 	protected String content;
-	protected LocalDateTime createdate;
+	protected String createdate;
 	protected LocalDateTime updatetime;
 	protected String sort;
 	protected int authorid;
 
 	public Content() {
+	}
+	public Content(int id, String title, String brief, String content, String createdate, int authorid) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.brief = brief;
+		this.content = content;
+		this.createdate= createdate;
+		this.authorid = authorid;
 	}
 
 	public Content(String title, String brief, String content, int authorid) {
@@ -64,11 +73,11 @@ public class Content {
 		this.content = content;
 	}
 
-	public LocalDateTime getCreateDate() {
+	public String getCreateDate() {
 		return createdate;
 	}
 
-	public void setCreateDate(LocalDateTime createDate) {
+	public void setCreateDate(String createDate) {
 		this.createdate = createDate;
 	}
 

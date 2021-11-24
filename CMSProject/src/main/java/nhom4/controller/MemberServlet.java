@@ -15,6 +15,7 @@ import nhom4.dao.ContentDAO;
 import nhom4.dao.MemberDAO;
 import nhom4.models.Member;
 import nhom4.utilities.Common;
+import nhom4.models.MemberLogin;
 
 /**
  * Servlet implementation class MemberServlet
@@ -45,6 +46,12 @@ public class MemberServlet extends HttpServlet {
 			case "/editnewmember":
 				showEditForm(request, response);
 				break;
+			case "/login":
+				showEditForm(request, response);
+				break;
+			case "/register":
+				showEditForm(request, response);
+				break;
 			case "/updatemember":
 				updateMember(request, response);
 				break;
@@ -55,15 +62,56 @@ public class MemberServlet extends HttpServlet {
 	}
 
 	/**
+	 * @throws SQLException 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void register(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		// TODO Auto-generated method stub
+		//doGet(request, response);
+		String user = request. getParameter ("user") ;
+		String email = request. getParameter ("email") ;
+		String pass = request. getParameter ("pass") ;
+		String re_pass = request. getParameter ("repass") ;
+		if ( !pass.equals(re_pass) ) {
+			response.sendRedirect("index.jsp");
+		}else {
+			MemberDAO member= new MemberDAO();
+			Member a=member.checkMember(email);
+			if(a == null)
+			{
+				Member acc = new Member(user, email, pass);
+				member.register(acc);
+				response.sendRedirect("index.titles");
+				
+			}else
+			{
+				response.sendRedirect("register.titles");
+			}		
+		}
+		
+	}
+	protected void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		String email= request.getParameter("email");
+		String pass= request.getParameter("pass");
+		MemberDAO member= new MemberDAO();
+		Member a= member.login(email, pass);
+		if(a == null)
+		{
+			request.setAttribute("mess", "Wrong email or password");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}else
+		{
+			//request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
+			response.sendRedirect(Common.HOME_TILES);
+		}
+		
 	}
-
+	
 	private void showForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);

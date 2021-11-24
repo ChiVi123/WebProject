@@ -14,7 +14,7 @@ public class ContentDAO {
 	private static final String INSERT_CONTENT = "INSERT INTO Content"
 			+ "  (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES " + " (?, ?, ?, now(), now(), ?);";
 	private static final String SELECT_CONTENT = "SELECT * FROM Content WHERE id = ?;";
-	private static final String SELECT_CONTENTS = "SELECT * FROM Content;";
+	private static final String SELECT_CONTENTS = "SELECT * FROM content;";
 	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ? AND AuthorId = ?;";
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
@@ -85,8 +85,9 @@ public class ContentDAO {
 				String title = rs.getString("Title");
 				String brief = rs.getString("Brief");
 				String content = rs.getString("Content");
+				String createdate = rs.getString("CreateDate");
 				int authorid = rs.getInt("AuthorId");
-				listcontents.add(new Content(id, title, brief, content, authorid));
+				listcontents.add(new Content(id, title, brief, content, createdate, authorid));
 			}
 		} catch (SQLException e) {
 			connect.printSQLException(e);

@@ -10,9 +10,9 @@
 </head>
 <body>
 	<div id="formViewContent">
-	<h1>View Content</h1>
-	<hr style="opacity: 0.5">
-	<br>
+		<h1>View Content</h1>
+		<hr style="opacity: 0.5">
+		<br>
 		<div class="khung">
 			<div style="size: 3px" style="margin-left:10px" id=subTitle>View
 				content list</div>
@@ -26,28 +26,26 @@
 					<th align="left" style="width: 20%">Actions</th>
 				</tr>
 				<tr>
-				<c:forEach var="content" items="${listcontent}">
-                                <tr>
-                                    <td>
-                                        <c:out value="${content.id}" />
-                                    </td>
-                                    <td>
-                                        <c:out value="${content.title}" />
-                                    </td>
-                                    <td>
-                                        <c:out value="${content.brief}" />
-                                    </td>
-                                    <td>
-                                        <c:out value="${content.createdate}" />
-                                    </td>                                
-							<td><div class="group-flex">
-							<div>
-								<a class="link" href="#">Edit</a> &emsp; <a class="link"
-									href="#">Delete</a>
-							</div>
-						</div></td>
-				</tr></c:forEach>
-		</table>
+					<c:forEach var="content" items="${listcontent}">
+						<tr>
+							<td><c:out value="${content.id}" /></td>
+							<td><c:out value="${content.title}" /></td>
+							<td><c:out value="${content.brief}" /></td>
+							<td>
+								<%-- <c:out value="${content.createdate}" /> --%>
+							</td>
+							<td>
+								<div class="group-flex">
+									<div>
+										<a class="link" href="edit?id=<c:out value="${content.id}" />">Edit</a>
+										&emsp; <a class="link"
+											href="delete?id=<c:out value="${content.id}" />">Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
+			</table>
 		</div>
 		<br> <br> <br>
 		<ul class="pagination modal-4">

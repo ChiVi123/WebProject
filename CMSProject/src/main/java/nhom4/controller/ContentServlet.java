@@ -71,7 +71,10 @@ public class ContentServlet extends HttpServlet {
 			case "/update":
 				updateContent(request, response);
 				break;
-			default:
+			case "/login":				
+				login(request, response);
+				break;
+			case "/home":
 				listContent(request, response);
 				break;
 			}
@@ -114,8 +117,12 @@ public class ContentServlet extends HttpServlet {
 
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		List <Content> listcontent = contentDAO.selectContents();
-        request.setAttribute("listcontent", listcontent);
+		List<Content> listcontent = contentDAO.selectContents();
+		for(Content item : listcontent) {
+			System.out.println(item.getCreateDate());
+		}
+		request.setAttribute("listcontent", listcontent);
+		request.setAttribute("idglobal", Common.ID_GLOBAL);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
 		dispatcher.forward(request, response);
 	}
@@ -167,6 +174,27 @@ public class ContentServlet extends HttpServlet {
 			throws SQLException, IOException {
 		response.sendRedirect("home");
 	}
+
+	protected void login(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// doGet(request, response);
+
+		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		Member loginMember = memberDAO.login(email, pass);
+
+		if (loginMember == null) {
+			request.setAttribute("mess", "Wrong email or password");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		} else {
+			// request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
+			Common.ID_GLOBAL = loginMember.getId();
+			response.sendRedirect("home");
+		}
+
+	}
+
 	// Phần Session và Cookie
 	/*
 	 * public CookieFilter() { }

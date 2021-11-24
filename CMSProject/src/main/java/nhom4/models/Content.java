@@ -74,7 +74,7 @@ public class Content {
 	}
 
 	public String getCreateDate() {
-		return createdate;
+		return this.createdate;
 	}
 
 	public void setCreateDate(String createDate) {

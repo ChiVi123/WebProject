@@ -13,39 +13,16 @@ public class MemberDAO {
 	private static final String UPDATE_MEMBER = "UPDATE Member "
 			+ " SET Firstname = ?, Lastname = ?, Phone = ?, Description = ? WHERE id = ?;";
 	private static final String SELECT_MEMBER = "SELECT Firstname,Lastname, Email, Phone, Description  FROM Member WHERE id = ?;";
-	private static final String SELECT_MEMBERLOGIN ="SELECT Email, Password FROM member";
-	private static final String SELECT_MEMBERCHECK ="SELECT * FROM member WHERE [Email]=?;";
+	private static final String SELECT_MEMBERLOGIN = "SELECT * FROM member WHERE Email = ? AND Password = ?;";
+	private static final String SELECT_MEMBERCHECK = "SELECT * FROM member WHERE [Email]=?;";
 	private static final String INSERT_MEMBER = "INSERT INTO member"
 			+ "  (Username, Email, Password, CreateDate, UpdateTime) VALUES " + " (?, ?, ?, now(), now());";
+
 	public MemberDAO() {
 
 	}
-	
-	
-	public static Member findMemberLogin(String userName, String password) {
-		Member select = null;
-		// Step 1: Establishing a Connection
-		try (Connection connection = connect.getConnection();
-				// Step 2:Create a statement using connection object
-				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBER);) {
-			statement.setInt(1, id);
-			// Step 3: Execute the query or update query
-			ResultSet rs = statement.executeQuery();
 
-			while (rs.next()) {
-				String firstname = rs.getString("Firstname");
-				String lastname = rs.getString("Lastname");
-				String email = rs.getString("Email");
-				String phone = rs.getString("Phone");
-				String desciption = rs.getString("Description");
-				select = new Member(id, firstname, lastname, email, phone, desciption);
-			}
-
-		} catch (SQLException e) {
-			connect.printSQLException(e);
-		}
-		return select;
-	}
+	ConnectDB connect = new ConnectDB();
 
 	public Member selectMember(int id) {
 		Member select = null;
@@ -71,39 +48,58 @@ public class MemberDAO {
 		}
 		return select;
 	}
-
-	ConnectDB connect = new ConnectDB();
-
-	public Member checkMember (String email) {
+	
+	//kiem tra trung email
+	public Member checkMember(String email) {
 		try (Connection connection = connect.getConnection();
-			PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERCHECK);) {
-				ResultSet rs = statement.executeQuery();
-				while (rs.next()) {
-					return new Member(rs.getString(1), rs.getString(2));
-					}}catch (Exception e) {}
-			return null;
-	}
-	public Member login(String email, String pass) {
-		try (Connection connection = connect.getConnection();
-		PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERLOGIN);) {
+				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERCHECK);) {
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
 				return new Member(rs.getString(1), rs.getString(2));
-				}}catch (Exception e) {}
+			}
+		} catch (SQLException e) {
+			connect.printSQLException(e);
+		}
 		return null;
 	}
-	public void register(Member member) throws SQLException {
-				try (Connection connection = connect.getConnection();
-						PreparedStatement statement = connection.prepareStatement(INSERT_MEMBER)) {
-					statement.setString(1, member.getUsername());
-					statement.setString(2, member.getEmail());
-					statement.setString(3, member.getPassword());
-					System.out.println(statement);
-					statement.executeUpdate();
-				} catch (SQLException e) {
-					connect.printSQLException(e);
-				}
+	
+	//Login
+	public Member login(String email, String pass) {
+		Member loginMember = null;
+		try (Connection connection = connect.getConnection();
+				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERLOGIN);) {
+			statement.setString(1, email);
+			statement.setString(2, pass);
+			System.out.println(statement);
+			
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String firstname = rs.getString("Firstname");
+				String lastname = rs.getString("Lastname");
+				String phone = rs.getString("Phone");
+				String desciption = rs.getString("Description");
+				loginMember = new Member(id, firstname, lastname, email, phone, desciption);
+			}
+		} catch (SQLException e) {
+			connect.printSQLException(e);
+		}
+		return loginMember;
 	}
+
+	public void register(Member member) throws SQLException {
+		try (Connection connection = connect.getConnection();
+				PreparedStatement statement = connection.prepareStatement(INSERT_MEMBER)) {
+			statement.setString(1, member.getUsername());
+			statement.setString(2, member.getEmail());
+			statement.setString(3, member.getPassword());
+			System.out.println(statement);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			connect.printSQLException(e);
+		}
+	}
+
 	public boolean updateMember(Member member) throws SQLException {
 		boolean rowUpdated;
 

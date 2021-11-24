@@ -19,7 +19,7 @@
 			</button>
 			<ul id="subNav" class="dropdown-content">
 				<li>
-					<a href="edit-profile.tiles"> 
+					<a href="editmember?id=<c:out value="${idglobal}" />"> 
 						<i class="fas fa-user"></i>
 							User Profile
 					</a>

@@ -62,56 +62,54 @@ public class MemberServlet extends HttpServlet {
 	}
 
 	/**
-	 * @throws SQLException 
+	 * @throws SQLException
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void register(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		String user = request. getParameter ("user") ;
-		String email = request. getParameter ("email") ;
-		String pass = request. getParameter ("pass") ;
-		String re_pass = request. getParameter ("repass") ;
-		if ( !pass.equals(re_pass) ) {
+		// doGet(request, response);
+		String user = request.getParameter("user");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		String re_pass = request.getParameter("repass");
+		if (!pass.equals(re_pass)) {
 			response.sendRedirect("index.jsp");
-		}else {
-			MemberDAO member= new MemberDAO();
-			Member a=member.checkMember(email);
-			if(a == null)
-			{
-				Member acc = new Member(user, email, pass);
-				member.register(acc);
-				response.sendRedirect("index.titles");
-				
-			}else
-			{
-				response.sendRedirect("register.titles");
-			}		
+		} else {
+			//MemberDAO member = new MemberDAO();
+			// Member a=member.checkMember(email);
+			/*
+			 * if(a == null) {
+			 * 
+			 * Member acc = new Member(user, email, pass); member.register(acc);
+			 * response.sendRedirect("index.titles");
+			 * 
+			 * 
+			 * }else { response.sendRedirect("register.titles"); }
+			 */
 		}
-		
+
 	}
+
 	protected void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		String email= request.getParameter("email");
-		String pass= request.getParameter("pass");
-		MemberDAO member= new MemberDAO();
-		Member a= member.login(email, pass);
-		if(a == null)
-		{
-			request.setAttribute("mess", "Wrong email or password");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}else
-		{
-			//request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
-			response.sendRedirect(Common.HOME_TILES);
-		}
-		
+		// doGet(request, response);
+		/*
+		 * String email= request.getParameter("email"); String pass=
+		 * request.getParameter("pass"); MemberDAO member= new MemberDAO(); Member a=
+		 * member.login(email, pass);
+		 */
+		/*
+		 * if(a == null) { request.setAttribute("mess", "Wrong email or password");
+		 * request.getRequestDispatcher("index.jsp").forward(request, response); }else {
+		 * //request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
+		 * response.sendRedirect(Common.HOME_TILES); }
+		 */
+
 	}
-	
+
 	private void showForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
@@ -121,16 +119,19 @@ public class MemberServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Member existingMember = memberDAO.selectMember(id);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
-		request.setAttribute("member", existingMember);
-		dispatcher.forward(request, response);
+		/*
+		 * Member existingMember = memberDAO.selectMember(id);
+		 * 
+		 * RequestDispatcher dispatcher =
+		 * request.getRequestDispatcher(Common.PROFILE_TILES);
+		 * request.setAttribute("member", existingMember); dispatcher.forward(request,
+		 * response);
+		 */
 	}
 
 	private void updateMember(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
-		
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
@@ -142,9 +143,10 @@ public class MemberServlet extends HttpServlet {
 		 * 
 		 * Content book = new Content(id, title, brief, content, authorid);
 		 */
-		Member editMember = new Member(id, firstname, lastname, phone, des);
-		memberDAO.updateMember(editMember);
-		response.sendRedirect("home");
+		/*
+		 * Member editMember = new Member(id, firstname, lastname, phone, des);
+		 * memberDAO.updateMember(editMember); response.sendRedirect("home");
+		 */
 	}
 
 }

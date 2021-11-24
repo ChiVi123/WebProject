@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 public class MemberLogin {
-	public static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
+		public static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
 
 	private static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
 

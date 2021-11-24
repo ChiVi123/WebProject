@@ -18,7 +18,8 @@ public class ContentDAO {
 	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ? AND AuthorId = ?;";
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
-
+	
+    
 	// Phan Search Content //
 	/*private static final String SEARCH_CONTENT = "SELECT * FROM Content Where Title  LIKE ?‘K_%_% OR Brief  LIKE ?‘K_%_% OR Content LIKE ?‘K_%_% ’";*/
 	public ContentDAO() {
@@ -67,15 +68,14 @@ public class ContentDAO {
 		}
 		return select;
 	}
-
 	public List<Content> selectContents() {
 		// using try-with-resources to avoid closing resources (boiler plate code)
-		List<Content> contents = new ArrayList<>();
+		List<Content> listcontents = new ArrayList<>();
 		// Step 1: Establishing a Connection
 		try (Connection connection = connect.getConnection();
 
 				// Step 2:Create a statement using connection object
-				PreparedStatement statement = connection.prepareStatement(SELECT_CONTENTS);) {
+			PreparedStatement statement = connection.prepareStatement(SELECT_CONTENTS);) {
 			System.out.println(statement);
 			// Step 3: Execute the query or update query
 			ResultSet rs = statement.executeQuery();
@@ -87,12 +87,12 @@ public class ContentDAO {
 				String brief = rs.getString("Brief");
 				String content = rs.getString("Content");
 				int authorid = rs.getInt("AuthorId");
-				contents.add(new Content(id, title, brief, content, authorid));
+				listcontents.add(new Content(id, title, brief, content, authorid));
 			}
 		} catch (SQLException e) {
 			connect.printSQLException(e);
 		}
-		return contents;
+		return listcontents;
 	}
 
 	public boolean deleteContent(int id) throws SQLException {

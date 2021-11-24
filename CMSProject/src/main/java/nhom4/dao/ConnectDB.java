@@ -3,17 +3,20 @@ package nhom4.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+
 /*import nhom4.utilities.Common;*/
 
 public class ConnectDB {
 	/*
-	 * Sang: Nhat: "nhatnguyen1712"; Vi: "ef00tb@ll2022";
+	 * Sang:"sang0375431663" Nhat: "nhatnguyen1712"; Vi: "ef00tb@ll2022";
 	 */
 	public static final String JDBC_URL = "jdbc:mysql://localhost:3306/webfinal?useSSL=false";
 	public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String JDBC_USER_NAME = "root";
-	public static final String JDBC_PASSWORD = "nhatnguyen1712";
-
+	public static final String JDBC_PASSWORD = "sang0375431663";
+	
+	
 	public Connection getConnection() {
 		Connection connection = null;
 		try {
@@ -28,6 +31,8 @@ public class ConnectDB {
 		}
 		return connection;
 	}
+	
+
 
 	public void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {

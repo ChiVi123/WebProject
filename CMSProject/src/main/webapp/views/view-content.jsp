@@ -26,17 +26,27 @@
 					<th align="left" style="width: 20%">Actions</th>
 				</tr>
 				<tr>
-					<td>123</td>
-					<td>hello</td>
-					<td>chao</td>
-					<td>sang</td>
+				<c:forEach var="content" items="${listcontent}">
+                                <tr>
+                                    <td>
+                                        <c:out value="${content.id}" />
+                                    </td>
+                                    <td>
+                                        <c:out value="${content.Title}" />
+                                    </td>
+                                    <td>
+                                        <c:out value="${content.Brief}" />
+                                    </td>
+                                    <td>
+                                        <c:out value="${content.CreateDate}" />
+                                    </td>
 					<td><div class="group-flex">
 							<div>
 								<a class="link" href="#">Edit</a> &emsp; <a class="link"
 									href="#">Delete</a>
 							</div>
 						</div></td>
-				</tr>
+				</tr></c:forEach>
 		</table>
 		</div>
 		<br> <br> <br>

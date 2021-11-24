@@ -121,7 +121,9 @@ public class ContentServlet extends HttpServlet {
 
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
+		List <Content> listcontent = contentDAO.selectContents();
+        request.setAttribute("listcontent", listcontent);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("view-content.jsp");
 		dispatcher.forward(request, response);
 	}
 

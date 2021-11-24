@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 .login{
-	width: 300px;
-	height: 300px;
+	width: 290px;
+	/*height: 325px;*/
 	/*background-color: green;*/
 	text-align: center;
 	border:1px solid grey;
@@ -15,7 +15,6 @@
 	width: 80%;
 }
 .text-message {
-	
 	display: block;
 }
 .form-group.invalid .form-control {
@@ -25,10 +24,12 @@
 .form-group.invalid .text-message {
   color: red;
 }
-h3{
-	float: left;
-	padding-left: 40px;
-	color: #868787;
+.style {
+	color: rgb(60, 60, 60);
+    font-size: 20px;
+    float: left;
+    margin-left: 15px;
+    margin-top: 20px;
 }
 p{
 	/*display: inline-block;*/
@@ -38,12 +39,13 @@ p{
 }
 .login input{
 	margin-bottom: 10px;
+	margin-left: 15px;
 	border-radius: 5px;
 	border: 0.5px solid grey;
 	padding-left: 10px;
 	display: inline-block;
-	height: 25px;
-  	width: 75%;
+	height: 30px;
+	width: 260px;
 }
 .check input{
 	width: 10px;
@@ -51,11 +53,11 @@ p{
 }
 .check{
 	float: left;
-	padding-left: 30px;
 }
 button{
-	width: 80%;
+	width: 260px;
 	height: 40px;
+	margin-left: 15px;
 	border-radius: 5px;
 	border:none;
 	background-color: #3cb371;
@@ -63,7 +65,7 @@ button{
 }
 a{
 	float: left;
-	padding-left: 35px;
+	padding-left: 15px;
 	margin-top: 20px;
 	text-decoration: none;
 }

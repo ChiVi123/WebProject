@@ -13,6 +13,7 @@ public class Member {
 	private String Description;
 	private LocalDateTime CreateDate;
 	private LocalDateTime UpdateTime;
+	
 
 	public Member() {}
 	public Member(int id, String firstname, String lastname, String phone, String description) {

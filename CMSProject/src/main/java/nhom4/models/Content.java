@@ -45,7 +45,7 @@ public class Content {
 	}
 
 	public void setTitle(String title) {
-		title = title;
+		this.title = title;
 	}
 
 	public String getBrief() {
@@ -53,7 +53,7 @@ public class Content {
 	}
 
 	public void setBrief(String brief) {
-		brief = brief;
+		this.brief = brief;
 	}
 
 	public String getContent() {
@@ -61,7 +61,7 @@ public class Content {
 	}
 
 	public void setContent(String content) {
-		content = content;
+		this.content = content;
 	}
 
 	public LocalDateTime getCreateDate() {
@@ -69,7 +69,7 @@ public class Content {
 	}
 
 	public void setCreateDate(LocalDateTime createDate) {
-		createdate = createDate;
+		this.createdate = createDate;
 	}
 
 	public LocalDateTime getUpdateTime() {
@@ -95,5 +95,11 @@ public class Content {
 	public void setAuthorId(int authorId) {
 		authorid = authorId;
 	}
+
+	@Override
+	public String toString() {
+		return "Content [id=" + id + ", title=" + title + ", brief=" + brief + ", createdate=" + createdate + "]";
+	}
+	
 
 }

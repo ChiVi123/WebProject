@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .register{
 	width: 300px;
-	height: 380px;
+	/*height: 420px;*/
 	/*background-color: green;*/
 	text-align: center;
 	border:1px solid grey;
@@ -24,10 +24,12 @@
 .form-group.invalid .text-message {
   color: red;
 }
-h2{
+.style {
+	color: rgb(60, 60, 60);
+	font-size: 20px;
 	float: left;
-	padding-left: 40px;
-	color: #868787;
+	margin-left: 15px;
+	margin-top: 10px;
 }
 p{
 	/*display: inline-block;*/
@@ -36,14 +38,14 @@ p{
 	float: left;
 }
 .register input{
-	width: 200px;
-	height: 40px;
+	width: 260px;
+	height: 30px;
 	margin-bottom: 10px;
+	margin-left: 15px;
 	border-radius: 5px;
 	border: 1px solid grey;
-	padding-left: 20px;
+	padding-left: 10px;
 	display: inline-block;
-
 }
 .check input{
 	width: 10px;
@@ -54,20 +56,17 @@ p{
 	padding-left: 40px;
 }
 button{
-	width: 220px;
+	width: 270px;
 	height: 40px;
 	border-radius: 5px;
 	border:none;
 	background-color: #3cb371;
 	color: white;
-}
-button:hover{
-	width: 222px;
-	height: 44px;
+	margin-left: 15px;
 }
 a{
 	float: left;
-	padding-left: 40px;
+	padding-left: 15px;
 	margin-top: 20px;
 	text-decoration: none;
 }

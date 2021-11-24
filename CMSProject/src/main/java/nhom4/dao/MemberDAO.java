@@ -13,9 +13,35 @@ public class MemberDAO {
 	private static final String UPDATE_MEMBER = "UPDATE Member "
 			+ " SET Firstname = ?, Lastname = ?, Phone = ?, Description = ? WHERE id = ?;";
 	private static final String SELECT_MEMBER = "SELECT Firstname,Lastname, Email, Phone, Description  FROM Member WHERE id = ?;";
+	private static final String SELECT_MEMBERLOGIN ="SELECT Username, Password FROM Member;";
 
 	public MemberDAO() {
 
+	}
+	
+	public static Member findMemberLogin(String userName, String password) {
+		Member select = null;
+		// Step 1: Establishing a Connection
+		try (Connection connection = connect.getConnection();
+				// Step 2:Create a statement using connection object
+				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBER);) {
+			statement.setInt(1, id);
+			// Step 3: Execute the query or update query
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				String firstname = rs.getString("Firstname");
+				String lastname = rs.getString("Lastname");
+				String email = rs.getString("Email");
+				String phone = rs.getString("Phone");
+				String desciption = rs.getString("Description");
+				select = new Member(id, firstname, lastname, email, phone, desciption);
+			}
+
+		} catch (SQLException e) {
+			connect.printSQLException(e);
+		}
+		return select;
 	}
 
 	public Member selectMember(int id) {

@@ -19,6 +19,7 @@ public class MemberDAO {
 
 	}
 	
+	
 	public static Member findMemberLogin(String userName, String password) {
 		Member select = null;
 		// Step 1: Establishing a Connection

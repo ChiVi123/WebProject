@@ -46,7 +46,6 @@ public class MemberServlet extends HttpServlet {
 				showEditForm(request, response);
 				break;
 			case "/updatemember":
-				System.out.println("updateMember");
 				updateMember(request, response);
 				break;
 			}
@@ -89,12 +88,6 @@ public class MemberServlet extends HttpServlet {
 		String lastname = request.getParameter("lastname");
 		String phone = request.getParameter("phone");
 		String des = request.getParameter("description");
-
-		System.out.println(id);
-		System.out.println(firstname);
-		System.out.println(lastname);
-		System.out.println(phone);
-		System.out.println(des);
 
 		/*
 		 * int authorid = Integer.parseInt(request.getParameter("authorid"));

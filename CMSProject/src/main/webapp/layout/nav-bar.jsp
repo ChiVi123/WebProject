@@ -20,19 +20,13 @@
 				<i class="fas fa-search"></i>
 			</button type ="submit">
 		</div>
-<<<<<<< HEAD
 		</form>
 		
-		<a href="home"> <i class="fontContent bi bi-table"></i> View Contents
-		</a> <a href="new"> <i class="fontContent fas fa-edit"></i>
-			Form Content
-=======
 		<!-- /Content/ -->
 		<a href="<c:url value="home"/>"> <i
 			class="fontContent bi bi-table"></i> View Contents
 		</a> <a href="<c:url value="new"/>"> <i
 			class="fontContent fas fa-edit"></i> Form Content
->>>>>>> 8b83523f5b4940657fecfc3ebeea8219b2a3637f
 		</a>
 	</div>
 </body>

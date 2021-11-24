@@ -12,7 +12,7 @@ public class ConnectDB {
 	public static final String JDBC_URL = "jdbc:mysql://localhost:3306/webfinal?useSSL=false";
 	public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String JDBC_USER_NAME = "root";
-	public static final String JDBC_PASSWORD = "nhatnguyen1712";
+	public static final String JDBC_PASSWORD = "ef00tb@ll2022";
 
 	public Connection getConnection() {
 		Connection connection = null;

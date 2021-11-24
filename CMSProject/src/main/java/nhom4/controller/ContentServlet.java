@@ -20,12 +20,12 @@ import nhom4.utilities.Common;
 /**
  * Servlet implementation class ContentServlet
  */
-/* @WebServlet(name = "ContentServlet", value = "/Content/*") */
-@WebServlet("/")
+
+@WebServlet(name = "ContentServlet", value = "/")
 public class ContentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ContentDAO contentDAO;
-	private MemberDAO memberDAO; // p
+	private MemberDAO memberDAO;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -46,17 +46,16 @@ public class ContentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		String action = request.getServletPath();
+		//String action = request.getPathInfo();
 		System.out.println(action);
 		try {
 			switch (action) {
-
 			case "/editmember":
 				showEditMemberForm(request, response);
 				break;
 			case "/updatemember":
 				updateMember(request, response);
 				break;
-
 			case "/new":
 				showNewForm(request, response);
 				break;
@@ -107,12 +106,6 @@ public class ContentServlet extends HttpServlet {
 		String lastname = request.getParameter("lastname");
 		String phone = request.getParameter("phone");
 		String des = request.getParameter("description");
-
-		System.out.println(id);
-		System.out.println(firstname);
-		System.out.println(lastname);
-		System.out.println(phone);
-		System.out.println(des);
 
 		Member editMember = new Member(id, firstname, lastname, phone, des);
 		memberDAO.updateMember(editMember);

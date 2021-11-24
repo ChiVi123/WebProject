@@ -27,7 +27,6 @@ public class ContentDAO {
 	ConnectDB connect = new ConnectDB();
 
 	public void insertContent(Content content) throws SQLException {
-		System.out.println(INSERT_CONTENT);
 		// try-with-resource statement will auto close the connection.
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(INSERT_CONTENT)) {

@@ -4,14 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <meta charset="ISO-8859-1">
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/edit-profile.css"/>" />
-=======
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<c:url value="/resources/css/edit-profile.css"/>" />
->>>>>>> 8b83523f5b4940657fecfc3ebeea8219b2a3637f
 </head>
 <body>
 <body>

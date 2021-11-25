@@ -24,10 +24,10 @@
 		<span class="text-message"></span>
 		</div>
 		<div class="check">
-			<input class="checkbox" type="checkbox" placeholder="Enter password"> Remember me
+			<input class="checkbox" type="checkbox" placeholder="Enter password" id ="rememberMe" value ='IsRememberMe'> Remember me
 		</div>
 		<div class="form-group">
-		<button>Login</button>
+		<button onclick="lsRememberMe()">Login</button >
 		</div>
 		<a href="register.jsp">Click here to Register</a>
 		</form>
@@ -35,6 +35,7 @@
 		<br>
 	</div>
 	<script src="<c:url value="/resources/js/validator.js"/>"></script>
+	
     <script>
         Validator({
             form: "#des",
@@ -49,5 +50,6 @@
             ],
         });
     </script>
+ 
 </body>
 </html>

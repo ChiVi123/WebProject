@@ -21,24 +21,28 @@ public class ContentDAO {
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
 	
-	private static final String SEARCH_CONTENT = "SELECT * From Content Where  Title LIKE   ? OR Brief LIKE ? OR Content LIKE ?;";
-	// Phan Search Content //
-	/*private static final String SEARCH_CONTENT = "SELECT * FROM Content Where Title  LIKE ?‘K_%_% OR Brief  LIKE ?‘K_%_% OR Content LIKE ?‘K_%_% ’";*/
+	/*private static final String SEARCH_CONTENT = "SELECT * From Content Where  Title LIKE   ? OR Brief LIKE ? OR Content LIKE ?;";*/
+	
 	public ContentDAO() {
 	}
 
 	static ConnectDB connect = new ConnectDB();
-	public List<Content> searchContents(String textsearch) {
+	public List<Content> searchContents(String textsearch,int limit, int page) {
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Content> listcontents = new ArrayList<>();
 		// Step 1: Establishing a Connection
+		int offset=(page - 1) * limit;
+		String SEARCH_CONTENTS="SELECT * From Content Where  Title LIKE   ? OR Brief LIKE ? OR Content LIKE ?" +"LIMIT "  + Integer.toString(limit) + " OFFSET " + Integer.toString(offset);
+		System.out.println(SEARCH_CONTENTS);
+		
+	
 		try (Connection connection = connect.getConnection();
 
 				// Step 2:Create a statement using connection object
-			PreparedStatement statement = connection.prepareStatement(SEARCH_CONTENT);) {
+			PreparedStatement statement = connection.prepareStatement(SEARCH_CONTENTS);) {
 			statement.setString(1, '%'+textsearch +'%');
 			statement.setString(2,'%' +textsearch+'%');
-			statement.setString(3, '%'+textsearch+'%');
+			statement.setString(3, textsearch);
 			System.out.println(statement);
 			// Step 3: Execute the query or update query
 			ResultSet rs = statement.executeQuery();

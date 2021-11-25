@@ -8,7 +8,10 @@
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/ViewContent.css"/>" />
 </head>
-<body>
+<body class="preloading">
+<!-- loading -->
+<div class="load">Loading</div>
+<!-- viewcontent -->
 	<div id="formViewContent">
 		<h1>View Content</h1>
 		<hr style="opacity: 0.5">
@@ -36,10 +39,9 @@
 							</td>
 							<td>
 								<div class="group-flex">
-									<div>
-										<a class="link" href="edit?id=<c:out value="${content.id}" />">Edit</a>
-										&emsp; <a class="link"
-											href="delete?id=<c:out value="${content.id}" />">Delete</a>
+									<div style="height:40px;padding-top:10%">
+										<a class="link" id="style" href="edit?id=<c:out value="${content.id}" />">Edit</a>
+										<a class="link" id="style" href="delete?id=<c:out value="${content.id}" />">Delete</a>
 									</div>
 								</div>
 							</td>

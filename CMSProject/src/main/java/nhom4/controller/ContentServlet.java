@@ -146,12 +146,25 @@ public class ContentServlet extends HttpServlet {
 	private void listSearchContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		String textsearch = request.getParameter("search");
-		List<Content> listcontent = contentDAO.searchContents(textsearch);
+		System.out.println("search");
+		int page = 1;
+		if (request.getParameter("page") != null && request.getParameter("page") != "")
+		{
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		int limit= 10;
+		List<Content> list = contentDAO.selectContents(limit, page);
+		  int total = list.size();
+		int totalPage= (int) Math.ceil((float)total / (float)limit); 
+		List<Content> listcontent = contentDAO.searchContents(textsearch,limit,page);
 		for(Content item : listcontent) {
 			System.out.println(item.getCreateDate());
 		}
+		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("listcontent", listcontent);
+		request.setAttribute("page", page);
 		request.setAttribute("idglobal", Common.ID_GLOBAL);
+		request.setAttribute("textsearch", textsearch);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
 		dispatcher.forward(request, response);
 	}

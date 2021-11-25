@@ -15,7 +15,8 @@
 	<div id="navBar">
 	<form id= "itemsearch" action="searchcontent" method="post">
 		<div id="wrapperSearch">
-			<input type="text" name="search" placeholder="Search...">
+			<input type="text" name="search" placeholder="Search... " value="<c:out value='${textsearch}'/>" >    
+			
 			<button>
 				<i class="fas fa-search"></i>
 			</button type ="submit">

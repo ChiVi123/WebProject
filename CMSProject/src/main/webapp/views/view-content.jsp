@@ -65,7 +65,7 @@
 				</c:choose>
 			</c:forEach>
 			<c:if test="${ page < totalPage }">
-					<a  href="/CMSProject/home?page=${ page + 1 }">&raquo;</a>
+					<a  href="/CMSProject/home?page=${page + 1}">&raquo;</a>
 			</c:if>			
 		</ul>
 	</div>

@@ -48,20 +48,23 @@
 			</table>
 		</div>
 		<br> <br> <br>
-		<ul class="pagination modal-4">
-			<li><a href="#" class="prev"> <i class="fa fa-chevron-left"></i>
-					Previous
-			</a></li>
-			<li><a href="#" class="active">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">6</a></li>
-			<li><a href="#">7</a></li>
-			<li><a href="#" class="next"> Next <i
-					class="fa fa-chevron-right"></i>
-			</a></li>
+		<ul class="pagination">
+			<c:if test="${ page != 1 }">
+					<a href="/CMSProject/home?page=${ page - 1 }" tabindex="-1" aria-disabled="true">&laquo;</a>
+			</c:if>
+			<c:forEach var="i" begin="1" end="${ totalPage }">
+				<c:choose>
+					<c:when test="${ page == i }">
+						<a class="active" href="/CMSProject/home?page=${ i }">${ i }</a>
+					</c:when>
+				<c:otherwise>
+					<a  href="/CMSProject/home?page=${ i }">${ i }</a>
+				</c:otherwise>			
+				</c:choose>
+			</c:forEach>
+			<c:if test="${ page < totalPage }">
+					<a  href="/CMSProject/home?page=${ page + 1 }">&raquo;</a>
+			</c:if>			
 		</ul>
 	</div>
 </body>

@@ -2,6 +2,8 @@ package nhom4.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -120,10 +122,24 @@ public class ContentServlet extends HttpServlet {
 
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		List<Content> listcontent = contentDAO.selectContents();
-		
+		int page = 1;
+		if (request.getParameter("page") != null && request.getParameter("page") != "")
+		{
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		int limit= 10;
+		int total= ContentDAO.count();
+		int totalPage= (int) Math.ceil((float)total / (float)limit); 
+		/*
+		 * System.out.println(totalPage); System.out.println(total);
+		 */
+		List<Content> listcontent = contentDAO.selectContents(limit, page);
+		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("listcontent", listcontent);
+		request.setAttribute("page", page);
 		request.setAttribute("idglobal", Common.ID_GLOBAL);
+		//System.out.println(Arrays.toString(listcontent.toArray()));
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
 		dispatcher.forward(request, response);
 	}

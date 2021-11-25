@@ -118,9 +118,7 @@ public class ContentServlet extends HttpServlet {
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Content> listcontent = contentDAO.selectContents();
-		for(Content item : listcontent) {
-			System.out.println(item.getCreateDate());
-		}
+		
 		request.setAttribute("listcontent", listcontent);
 		request.setAttribute("idglobal", Common.ID_GLOBAL);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
@@ -147,9 +145,8 @@ public class ContentServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String brief = request.getParameter("brief");
 		String content = request.getParameter("content");
-		// int authorid = Integer.parseInt(request.getParameter("authorid"));
-		// Content newContent = new Content(title, brief, content, authorid);
-		Content newContent = new Content(title, brief, content, 5);
+		
+		Content newContent = new Content(title, brief, content, Common.ID_GLOBAL);
 		contentDAO.insertContent(newContent);
 		response.sendRedirect("home");
 	}
@@ -160,12 +157,8 @@ public class ContentServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String brief = request.getParameter("brief");
 		String content = request.getParameter("content");
-		/*
-		 * int authorid = Integer.parseInt(request.getParameter("authorid"));
-		 * 
-		 * Content book = new Content(id, title, brief, content, authorid);
-		 */
-		Content editContent = new Content(id, title, brief, content, 5);
+		  
+		Content editContent = new Content(id, title, brief, content, Common.ID_GLOBAL);
 		contentDAO.updateContent(editContent);
 		response.sendRedirect("home");
 	}

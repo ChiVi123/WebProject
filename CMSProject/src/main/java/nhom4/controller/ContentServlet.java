@@ -53,6 +53,9 @@ public class ContentServlet extends HttpServlet {
 			case "/editmember":
 				showEditMemberForm(request, response);
 				break;
+			case "/searchcontent":
+				 listSearchContent(request, response);
+				break;
 			case "/updatemember":
 				updateMember(request, response);
 				break;
@@ -118,6 +121,18 @@ public class ContentServlet extends HttpServlet {
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Content> listcontent = contentDAO.selectContents();
+		for(Content item : listcontent) {
+			System.out.println(item.getCreateDate());
+		}
+		request.setAttribute("listcontent", listcontent);
+		request.setAttribute("idglobal", Common.ID_GLOBAL);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
+		dispatcher.forward(request, response);
+	}
+	private void listSearchContent(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		String textsearch = request.getParameter("search");
+		List<Content> listcontent = contentDAO.searchContents(textsearch);
 		for(Content item : listcontent) {
 			System.out.println(item.getCreateDate());
 		}
@@ -195,37 +210,5 @@ public class ContentServlet extends HttpServlet {
 
 	}
 
-	// Phần Session và Cookie
-	/*
-	 * public CookieFilter() { }
-	 * 
-	 * @Override public void init(FilterConfig fConfig) throws ServletException {
-	 * 
-	 * }
-	 * 
-	 * @Override public void destroy() {
-	 * 
-	 * }
-	 * 
-	 * @Override public void doFilter(ServletRequest request, ServletResponse
-	 * response, FilterChain chain) throws IOException, ServletException {
-	 * HttpServletRequest req = (HttpServletRequest) request; HttpSession session =
-	 * req.getSession();
-	 * 
-	 * UserAccount userInSession = MyUtils.getLoginedUser(session); // if
-	 * (userInSession != null) { session.setAttribute("COOKIE_CHECKED", "CHECKED");
-	 * chain.doFilter(request, response); return; }
-	 * 
-	 * // Connection đã được tạo trong JDBCFilter. Connection conn =
-	 * MyUtils.getStoredConnection(request);
-	 * 
-	 * // Cờ (flag) để kiểm tra Cookie. String checked = (String)
-	 * session.getAttribute("COOKIE_CHECKED"); if (checked == null && conn != null)
-	 * { String userName = MyUtils.getUserNameInCookie(req); try { UserAccount user
-	 * = DBUtils.findUser(conn, userName); MyUtils.storeLoginedUser(session, user);
-	 * } catch (SQLException e) { e.printStackTrace(); } // Đánh dấu đã kiểm tra
-	 * Cookie. session.setAttribute("COOKIE_CHECKED", "CHECKED"); }
-	 * 
-	 * chain.doFilter(request, response); }
-	 */
+	
 }

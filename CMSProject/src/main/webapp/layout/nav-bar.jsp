@@ -13,9 +13,9 @@
 </head>
 <body>
 	<div id="navBar">
-	<form id= "itemsearch" action="updatemember" method="post">
+	<form id= "itemsearch" action="searchcontent" method="post">
 		<div id="wrapperSearch">
-			<input type="text" name="search" id="" placeholder="Search...">
+			<input type="text" name="search" placeholder="Search...">
 			<button>
 				<i class="fas fa-search"></i>
 			</button type ="submit">

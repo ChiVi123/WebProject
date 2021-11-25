@@ -52,9 +52,7 @@ public class MemberServlet extends HttpServlet {
 			case "/register":
 				showEditForm(request, response);
 				break;
-			case "/updatemember":
-				updateMember(request, response);
-				break;
+			
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
@@ -129,24 +127,6 @@ public class MemberServlet extends HttpServlet {
 		 */
 	}
 
-	private void updateMember(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-
-		int id = Integer.parseInt(request.getParameter("id"));
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
-		String phone = request.getParameter("phone");
-		String des = request.getParameter("description");
-
-		/*
-		 * int authorid = Integer.parseInt(request.getParameter("authorid"));
-		 * 
-		 * Content book = new Content(id, title, brief, content, authorid);
-		 */
-		/*
-		 * Member editMember = new Member(id, firstname, lastname, phone, des);
-		 * memberDAO.updateMember(editMember); response.sendRedirect("home");
-		 */
-	}
+	
 
 }

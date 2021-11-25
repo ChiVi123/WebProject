@@ -87,6 +87,10 @@
 		       console.log(data);
 		   }*/
 		});
+		   Reset({
+	        	form: "#des",
+	        	resetButton: "#reset",
+	        });
 	</script>
 </body>
 </html>

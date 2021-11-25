@@ -11,8 +11,8 @@ public class ConnectDB {
 	public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	public static final String JDBC_USER_NAME = "root";
 	
-	public static final String JDBC_PASSWORD = "nhatnguyen1712";
-	//public static final String JDBC_PASSWORD = "sang0375431663";
+	
+	public static final String JDBC_PASSWORD = "sang0375431663";
 	//public static final String JDBC_PASSWORD = "nhatnguyen1712";	
 	
 	public Connection getConnection() {

@@ -48,8 +48,7 @@
 						<!-- Input Brief -->
 						<div class="item">
 							<label for="brief"  class="form-label">Brief</label>
-							<textarea name="brief" id="brief" cols="50" rows="4"
-								class="form-control" >
+							<textarea name="brief" id="brief"cols="50" rows="4" class="form-control" >
 								<c:out value='${content.brief}' />
 							</textarea>
 							<span class="form-message"></span>
@@ -57,8 +56,7 @@
 						<!-- Input Content -->
 						<div class="item">
 							<label for="content" class="form-label">Content</label>
-							<textarea name="content" id="content" cols="50" rows="6"
-								class="form-control" >
+							<textarea name="content" id="content"cols="50" rows="6" class="form-control" >
 								<c:out value='${content.content}' />	
 							</textarea>
 							<span class="form-message"></span>

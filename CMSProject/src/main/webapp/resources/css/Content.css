@@ -14,16 +14,13 @@ hr {
 	margin: 20px 0px;
 }
 
-.form {
-	/* width: 100%; */
-	font-size: 16px;
-}
-
 #main-content .form {
+	font-size: 16px;
 	border: var(--border-color);
 	border-style: solid;
 	border-width: 1.5px;
 	border-radius: 3px;
+	margin-bottom: 10px;
 }
 
 #sub-title {
@@ -55,11 +52,11 @@ hr {
 }
 
 .item.invalid .form-control {
-  border-color: #f33a58;
+	border-color: #f33a58;
 }
 
 .item.invalid .form-message {
-  color: #f33a58;
+	color: #f33a58;
 }
 
 .form-control {
@@ -67,7 +64,7 @@ hr {
 	font-size: 1.2rem;
 }
 
-.form-control,.item-button{
+.form-control, .item-button {
 	border: 1.5px solid var(--border-color);
 	border-radius: 3px;
 	padding: 10px;
@@ -77,4 +74,5 @@ hr {
 	background-color: white;
 	font-size: 0.8rem;
 	cursor: pointer;
+	margin: 10px;
 }

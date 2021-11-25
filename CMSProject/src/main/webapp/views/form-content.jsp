@@ -65,18 +65,14 @@
 						</div>
 						<!-- Submit -->
 						<button class="item-button">Submit Button</button>
-						<!-- Clear Character All Field -->
-						<c:if test="${content == null}">
-							<button href="new" class="item-button">Reset Button</button>
-						</c:if>
 						
-						<c:if test="${content != null}">
-							<button href="edit" class="item-button">Reset Button</button>
-						</c:if>
+						<!-- Clear Character All Field -->
+						<button id="reset" class="item-button">Reset Button</button>
 				</div>
 			</form>
 	</div>
 	<script src="<c:url value="/resources/js/validator.js"/>"></script>
+	<script src="<c:url value="/resources/js/reset.js"/>"></script>
     <script>
         Validator({
             form: "#form-content",
@@ -90,9 +86,11 @@
                 Validator.isRequired("#content"),
                 Validator.checkLength("#content", 50, 1000),                        
             ],
-            /* onSubmit: function (data) {
-                console.log(data);
-            } */
+        });
+        
+        Reset({
+        	form: "#form-content",
+        	resetButton: "#reset",
         });
     </script>
 </body>

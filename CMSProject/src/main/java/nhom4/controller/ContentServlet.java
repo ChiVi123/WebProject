@@ -129,7 +129,7 @@ public class ContentServlet extends HttpServlet {
 		}
 		int limit= 10;
 		int total= ContentDAO.count();
-		int totalPage= (int) Math.ceil((float)total / (float)limit); 
+		int totalPage= (int) Math.ceil((float)total / (float)limit);
 		/*
 		 * System.out.println(totalPage); System.out.println(total);
 		 */

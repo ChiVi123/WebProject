@@ -17,24 +17,54 @@
 		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
 	</servlet>
 
+	
 	<servlet>
 		<description></description>
-		<display-name>ContentServlet</display-name>
-		<servlet-name>ContentServlet</servlet-name>
-		<servlet-class>nhom4.controller.ContentServlet</servlet-class>
+		<display-name>CreateContentCtrler</display-name>
+		<servlet-name>CreateContentCtrler</servlet-name>
+		<servlet-class>nhom4.controller.CreateContentCtrler</servlet-class>
 	</servlet>
 
 	<servlet>
 		<description></description>
-		<display-name>MemberServlet</display-name>
-		<servlet-name>MemberServlet</servlet-name>
-		<servlet-class>nhom4.controller.MemberServlet</servlet-class>
+		<display-name>ReadContentCrtler</display-name>
+		<servlet-name>ReadContentCrtler</servlet-name>
+		<servlet-class>nhom4.controller.ReadContentCrtler</servlet-class>
 	</servlet>
 	<servlet>
 		<description></description>
-		<display-name>SearchServlet</display-name>
-		<servlet-name>SearchServlet</servlet-name>
-		<servlet-class>nhom4.controller.SearchServlet</servlet-class>
+		<display-name>UpdateContentCtrler</display-name>
+		<servlet-name>UpdateContentCtrler</servlet-name>
+		<servlet-class>nhom4.controller.UpdateContentCtrler</servlet-class>
+
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DeleteContentCtrler</display-name>
+		<servlet-name>DeleteContentCtrler</servlet-name>
+		<servlet-class>nhom4.controller.DeleteContentCtrler</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UpdateMemberCtrler</display-name>
+		<servlet-name>UpdateMemberCtrler</servlet-name>
+		<servlet-class>nhom4.controller.UpdateMemberCtrler</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LoginCtrler</display-name>
+		<servlet-name>LoginCtrler</servlet-name>
+		<servlet-class>nhom4.controller.LoginCtrler</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>RegisterCtrler</display-name>
+		<servlet-name>RegisterCtrler</servlet-name>
+		<servlet-class>nhom4.controller.RegisterCtrler</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -52,14 +82,24 @@
 		<url-pattern>/resources/*</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>MemberServlet</servlet-name>
-		<url-pattern>/MemberServlet</url-pattern>
+	<!--<servlet-mapping>
+		<servlet-name>DeleteContentCtrler</servlet-name>
+		<url-pattern>/DeleteContentCtrler</url-pattern>
 	</servlet-mapping>
-
+	
 	<servlet-mapping>
-		<servlet-name>SearchServlet</servlet-name>
-		<url-pattern>/SearchServlet</url-pattern>
+		<servlet-name>UpdateMemberCtrler</servlet-name>
+		<url-pattern>/UpdateMemberCtrler</url-pattern>
 	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LoginCtrler</servlet-name>
+		<url-pattern>/LoginCtrler</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RegisterCtrler</servlet-name>
+		<url-pattern>/RegisterCtrler</url-pattern>
+	</servlet-mapping>-->
 	<!--End tag web-app -->
 </web-app>

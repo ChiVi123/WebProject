@@ -41,7 +41,7 @@
 								<div class="group-flex">
 									<div style="height: 40px; padding-top: 10%">
 										<a class="link" id="style"
-											href="edit?id=<c:out value="${content.id}" />">Edit</a> <a
+											href="editContent?id=<c:out value="${content.id}" />">Edit</a> <a
 											class="link" id="style"
 											href="delete?id=<c:out value="${content.id}" />">Delete</a>
 									</div>

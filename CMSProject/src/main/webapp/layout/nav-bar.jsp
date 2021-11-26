@@ -26,7 +26,7 @@
 		<!-- /Content/ -->
 		<a href="<c:url value="home"/>"> <i
 			class="fontContent bi bi-table"></i> View Contents
-		</a> <a href="<c:url value="new"/>"> <i
+		</a> <a href="<c:url value="newContent"/>"> <i
 			class="fontContent fas fa-edit"></i> Form Content
 		</a>
 	</div>

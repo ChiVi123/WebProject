@@ -13,12 +13,12 @@
 </head>
 <body>
 <body>
+	<div id="load">Loading</div>
 	<div class="formEdit">
-
 		<label class="index"> Edit Profile</label>
 		<hr>
 		<br>
-		<form id="des" action="updatemember" method="post">
+		<form id="des" action="updateMember" method="post">
 			<div class="mainFormElement">
 				<label class="labelelement"> Profile Form Element </label>
 			</div>
@@ -89,6 +89,14 @@
 					Validator.checkLength("#description", 0, 1000), ],
 		});
 		
+	</script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/loading.js" />"></script>
+	<script type="text/javascript">
+		Loading({
+			load : "#load",
+			form : ".formEdit",
+		}, 5000);
 	</script>
 
 </body>

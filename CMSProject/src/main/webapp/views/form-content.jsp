@@ -9,6 +9,7 @@
 	href="<c:url value="/resources/css/Content.css"/>" />
 </head>
 <body>
+	<div id="load">Loading</div>
 	<div id="main-content">
 		<c:if test="${content == null}">
 			<div id="primary-title">Add Content</div>
@@ -22,12 +23,12 @@
 		<hr>
 		
 		<c:if test="${content == null}">
-			<form action="insert" class="form" id="form-content" method="post">
+			<form action="insertContent" class="form" id="form-content" method="post">
 				<div id="sub-title">Add Content Elements</div>
 		</c:if>
 		
 		<c:if test="${content != null}">
-			<form action="update" class="form" id="form-content" method="post">
+			<form action="updateContent" class="form" id="form-content" method="post">
 				<div id="sub-title">Edit Content Elements</div>
 		</c:if>
 		
@@ -91,5 +92,13 @@
         	resetButton: "#reset",
         });
     </script>
+    <script type="text/javascript"
+		src="<c:url value="/resources/js/loading.js" />"></script>
+	<script type="text/javascript">
+		Loading({
+			load : "#load",
+			form : "#main-content",
+		}, 5000);
+	</script>
 </body>
 </html>

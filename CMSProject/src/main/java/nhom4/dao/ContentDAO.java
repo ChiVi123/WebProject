@@ -18,7 +18,7 @@ public class ContentDAO {
 	// private static final String SELECT_CONTENTS = "SELECT COUNT(*) FROM content
 	// WHERE LIMIT ";
 	private static final String COUNT_CONTENT = "SELECT COUNT(*) as total FROM content ORDER BY id DESC";
-	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ? AND AuthorId = ?;";
+	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ?;";
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
 
@@ -28,8 +28,13 @@ public class ContentDAO {
 	}
 
 	static ConnectDB connect = new ConnectDB();
+<<<<<<< HEAD
 
 	public List<Content> searchContents(String textsearch, int limit, int page) {
+=======
+	
+	public List<Content> searchContents(String textsearch,int limit, int page) {
+>>>>>>> f502e527c04ec8e56653d32780bc42549d9a6f9d
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Content> listcontents = new ArrayList<>();
 		// Step 1: Establishing a Connection
@@ -154,6 +159,7 @@ public class ContentDAO {
 		}
 		return 0;
 	}
+<<<<<<< HEAD
 
 	public static int count(String textsearch) {
 		// Step 1: Establishing a Connection
@@ -185,8 +191,17 @@ public class ContentDAO {
 
 			System.out.println(statement);
 			rowDeleted = statement.executeUpdate() > 0;
+=======
+	public void deleteContent(int id) throws SQLException {
+		try (Connection connection = connect.getConnection();
+				PreparedStatement statement = connection.prepareStatement(DELETE_CONTENT);) {
+			statement.setInt(1, id);
+			//System.out.println(statement);
+			statement.executeUpdate();
+		}catch (SQLException e) {
+			connect.printSQLException(e);
+>>>>>>> f502e527c04ec8e56653d32780bc42549d9a6f9d
 		}
-		return rowDeleted;
 	}
 
 	public boolean updateContent(Content content) throws SQLException {

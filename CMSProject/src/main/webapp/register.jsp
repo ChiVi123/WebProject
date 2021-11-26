@@ -14,16 +14,17 @@
 		<br>
 		<br>
 		<hr>
+		<p class= "error">${mess}</p>
 		<div class="form-group">
-		<input id="user" class="user" name="user" type="text" placeholder="User name">
+		<input id="username" class="user" name="user" type="text" placeholder="User name">
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
-		<input id="email" class="email" name="email" type="email" placeholder="E-mail">
+		<input id="Email" class="email" name="email" type="email" placeholder="E-mail">
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
-		<input id="pass" class="pass" name="pass" type="password" placeholder="Password">
+		<input id="password" class="pass" name="pass" type="password" placeholder="Password">
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
@@ -45,12 +46,12 @@
             formGroup: ".form-group",
             errorSelector: ".text-message",
             rules: [
-                Validator.isRequired("#user"),
-                Validator.checkLength("#user", 3, 30),
-                Validator.isRequired("#email"),
-                Validator.checkLength("#email", 5, NA),
-                Validator.isRequired("#pass"),
-                Validator.checkLength("#pass", 8, 30),
+                Validator.isRequired("#username"),
+                Validator.checkLength("#username", 3, 30),
+                Validator.isRequired("#Email"),
+                Validator.checkLength("#Email", 5, NA),
+                Validator.isRequired("#password"),
+                Validator.checkLength("#password", 8, 30),
                 Validator.isRequired("#repass"),
                 Validator.checkLength("#repass", 8, 30),
             ],

@@ -9,9 +9,11 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import nhom4.dao.ContentDAO;
 import nhom4.dao.MemberDAO;
@@ -79,6 +81,8 @@ public class ContentServlet extends HttpServlet {
 				break;
 			case "/home":
 				listContent(request, response);
+			case "/register":
+				register(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -93,7 +97,8 @@ public class ContentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		 doGet(request, response);
+
 	}
 
 	private void showEditMemberForm(HttpServletRequest request, HttpServletResponse response)
@@ -106,16 +111,19 @@ public class ContentServlet extends HttpServlet {
 	}
 
 	private void updateMember(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String phone = request.getParameter("phone");
 		String des = request.getParameter("description");
-
+	
 		Member editMember = new Member(id, firstname, lastname, phone, des);
 		memberDAO.updateMember(editMember);
-		response.sendRedirect("home");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
+		Member existingMember = memberDAO.selectMember(id);
+		request.setAttribute("member", existingMember);
+		dispatcher.forward(request, response);
 	}
 
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
@@ -185,6 +193,11 @@ public class ContentServlet extends HttpServlet {
 
 	private void deleteContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
+		//response.sendRedirect("home");
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
+
+		contentDAO.deleteContent(id);
 		response.sendRedirect("home");
 	}
 
@@ -195,15 +208,105 @@ public class ContentServlet extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
-		Member loginMember = memberDAO.login(email, pass);
+		
+	String remember= request.getParameter("remember");
 
+		Cookie CEmail = new Cookie("email",email);
+		Cookie CPass = new Cookie("password",pass);
+		Member loginMember = memberDAO.login(email, pass);
+		HttpSession session = request.getSession();
+		session.setAttribute("acc",loginMember);
+		System.out.print(remember);
+		
+		Cookie[] arr = request.getCookies();
+		for (Cookie o :arr)
+		{ if(o.getName().equals("email"))
+		{   request.setAttribute("email",o.getValue());
+		System.out.println(o.getName());
+		System.out.println(o.getValue());
+		}
+		if(o.getName().equals("password"))
+		{request.setAttribute("password",o.getValue());}
+		}
+		
 		if (loginMember == null) {
 			request.setAttribute("mess", "Wrong email or password");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else {
+<<<<<<< HEAD
 			Common.idGlobal = loginMember.getId();
 			response.sendRedirect("home");
 		}
+=======
+			
+			// request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
+			Common.ID_GLOBAL = loginMember.getId();
+			
+			if(remember=="IsRememberMe")
+			{
+			
+			CEmail.setMaxAge(60*60*24);
+			CPass.setMaxAge(60*60*24);
+			response.addCookie(CPass);
+			response.addCookie(CEmail); // luu tren Trinh duyet
+			
+			
+			
+			
+		/*	request.getRequestDispatcher("index.jsp").forward(request, response);*/
+			}
+			else
+			{
+			CEmail.setMaxAge(0);
+			CPass.setMaxAge(0);
+			}
+			response.sendRedirect("home");
+		}
+		
+>>>>>>> f502e527c04ec8e56653d32780bc42549d9a6f9d
 	}
-
 }
+
+			
+			
+
+<<<<<<< HEAD
+}
+=======
+	protected void register(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		// TODO Auto-generated method stub
+		// doGet(request, response);
+		String user = request.getParameter("user");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		String re_pass = request.getParameter("repass");
+		MemberDAO member = new MemberDAO();
+		//Member a=member.checkMember(email);
+		/*
+		 * if(a == null) { request.setAttribute("mess",
+		 * "That email is taken. Please try another one");
+		 * request.getRequestDispatcher("register.jsp").forward(request, response); }
+		 * else
+		 */if (!pass.equals(re_pass))
+			{
+				request.setAttribute("mess", "Those passwords didn't match. Please try another one");
+				request.getRequestDispatcher("register.jsp").forward(request, response);
+				//response.sendRedirect("register.jsp");
+			}
+			else {
+				Member acc = new Member(user, email, pass); member.register(acc);
+				response.sendRedirect("index.jsp");
+				}
+			}
+	
+<<<<<<< HEAD
+	
+
+
+	
+
+=======
+	}
+>>>>>>> 3d2d89610b34a64a5b3b8a576193585adc4b0fd1
+>>>>>>> f502e527c04ec8e56653d32780bc42549d9a6f9d

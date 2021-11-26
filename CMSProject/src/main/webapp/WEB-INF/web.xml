@@ -17,12 +17,12 @@
 		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
 	</servlet>
 
-	<!--<servlet>
+	<servlet>
 		<description></description>
 		<display-name>ContentServlet</display-name>
 		<servlet-name>ContentServlet</servlet-name>
 		<servlet-class>nhom4.controller.ContentServlet</servlet-class>
-	</servlet>-->
+	</servlet>
 
 	<servlet>
 		<description></description>

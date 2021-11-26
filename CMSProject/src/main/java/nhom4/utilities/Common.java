@@ -7,5 +7,5 @@ public class Common {
 	public static final String CONTENT_TILES = "form-content.tiles";
 
 	//id member
-	public static int ID_GLOBAL;
+	public static int idGlobal;
 }

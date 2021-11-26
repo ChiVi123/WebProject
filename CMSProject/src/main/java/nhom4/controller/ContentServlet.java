@@ -81,6 +81,8 @@ public class ContentServlet extends HttpServlet {
 				break;
 			case "/home":
 				listContent(request, response);
+			case "/register":
+				register(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -237,5 +239,31 @@ public class ContentServlet extends HttpServlet {
 
 	}
 
+	protected void register(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		// TODO Auto-generated method stub
+		// doGet(request, response);
+		String user = request.getParameter("user");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		String re_pass = request.getParameter("repass");
+		MemberDAO member = new MemberDAO();
+		//Member a=member.checkMember(email);
+		/*
+		 * if(a == null) { request.setAttribute("mess",
+		 * "That email is taken. Please try another one");
+		 * request.getRequestDispatcher("register.jsp").forward(request, response); }
+		 * else
+		 */if (!pass.equals(re_pass))
+			{
+				request.setAttribute("mess", "Those passwords didn't match. Please try another one");
+				request.getRequestDispatcher("register.jsp").forward(request, response);
+				//response.sendRedirect("register.jsp");
+			}
+			else {
+				Member acc = new Member(user, email, pass); member.register(acc);
+				response.sendRedirect("index.jsp");
+				}
+			}
 	
-}
+	}

@@ -49,20 +49,6 @@ public class MemberDAO {
 		return select;
 	}
 	
-	//kiem tra trung email
-	public Member checkMember(String email) {
-		try (Connection connection = connect.getConnection();
-				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERCHECK);) {
-			ResultSet rs = statement.executeQuery();
-			while (rs.next()) {
-				return new Member(rs.getString(1), rs.getString(2));
-			}
-		} catch (SQLException e) {
-			connect.printSQLException(e);
-		}
-		return null;
-	}
-	
 	//Login
 	public Member login(String email, String pass) {
 		Member loginMember = null;
@@ -87,6 +73,20 @@ public class MemberDAO {
 		return loginMember;
 	}
 
+	//kiem tra trung email
+	public Member checkMember(String email) {
+		try (Connection connection = connect.getConnection();
+				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERCHECK);) {
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				return new Member(rs.getString(1), rs.getString(2));
+			}
+		} catch (SQLException e) {
+			connect.printSQLException(e);
+		}
+		return null;
+	}
+	//register
 	public void register(Member member) throws SQLException {
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(INSERT_MEMBER)) {

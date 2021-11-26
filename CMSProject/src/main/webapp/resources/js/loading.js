@@ -2,10 +2,8 @@
  * 
  */
 function Loading(options, settime) {
-	var loadElement = document.getElementById(options.load);
-	var formElement = document.getElementById(options.form);
-	console.log(loadElement);
-	console.log(formElement);
+	var loadElement = document.querySelector(options.load);
+	var formElement = document.querySelector(options.form);
 
 	setTimeout(function() {
 		loadElement.style.display = "none";

@@ -8,7 +8,8 @@
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/edit-profile.css"/>" />
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<c:url value="/resources/css/edit-profile.css"/>" />
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/edit-profile.css"/>" />
 </head>
 <body>
 <body>
@@ -32,39 +33,42 @@
 
 				<div class="form-group">
 					<label class="labeltext"> First Name</label> <br> <input
-						size="50" type="Text" class="form-control" id="firstname" name="firstname"
-						value="<c:out value='${member.firstname}'/>"
+						size="50" type="Text" class="form-control" id="firstname"
+						name="firstname" value="<c:out value='${member.firstname}'/>"
 						placeholder="Enter the first name" /> <span class="text-message"></span>
 				</div>
 				<div class="form-group">
-					<label class="labeltext">Last Name</label> <br> 
-					<input	size="50" type="text" class="form-control" id="lastname" name="lastname"
-						value="<c:out value='${member.lastname}' />"
+					<label class="labeltext">Last Name</label> <br> <input
+						size="50" type="text" class="form-control" id="lastname"
+						name="lastname" value="<c:out value='${member.lastname}' />"
 						placeholder="Enter the last name" /> <span class="text-message"></span>
 				</div>
 
 				<div class="form-group">
 					<label class="labeltext">Email</label> <br>
 					<p class="emailinput" />
-						<c:out value='${member.email}' />
-					</p> <span class="text-danger"></span>
+					<c:out value='${member.email}' />
+					</p>
+					<span class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label class="labeltext">Phone </label> <br> 
-					<input size="50" type="text" class="form-control" value="<c:out value='${member.phone}' />" id="phone"
-						placeholder="Enter your phone number" name="phone"/> <span
+					<label class="labeltext">Phone </label> <br> <input size="50"
+						type="text" class="form-control"
+						value="<c:out value='${member.phone}' />" id="phone"
+						placeholder="Enter your phone number" name="phone" /> <span
 						class="text-message"></span>
 
 				</div>
 				<div class="form-group">
 					<label class="labeltext"> Description </label> <br>
-					<textarea class="form-control" id="description" cols="50" rows="6" name="description"
-					autofocus> <c:out value='${member.description}' /> </textarea>
+					<textarea class="form-control" id="description" cols="50" rows="6"
+						name="description" autofocus> <c:out
+							value='${member.description}' /> </textarea>
 					<span class="text-message"> </span>
 				</div>
 
-				<input type="submit" value="Submit Button" class=" btn-space " />
-				<input type="reset" value="Reset Button" class=" btn-space " />
+				<input type="submit" value="Submit Button" class=" btn-space " /> <input
+					type="reset" value="Reset Button" class=" btn-space " />
 
 			</div>
 		</form>
@@ -83,15 +87,12 @@
 					Validator.checkLength("#phone", 9, 13),
 					Validator.isRequired("#description"),
 					Validator.checkLength("#description", 0, 1000), ],
-		/*   onSubmit: function (data) {
-		       console.log(data);
-		   }*/
 		});
-		   Reset({
-	        	form: "#des",
-	        	resetButton: "#reset",
-	        });
+		Reset({
+			form : "#des",
+			resetButton : "#reset",
+		});
 	</script>
-	
+
 </body>
 </html>

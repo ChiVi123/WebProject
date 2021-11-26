@@ -17,7 +17,7 @@ public class ContentDAO {
 	private static final String SELECT_CONTENT = "SELECT * FROM Content WHERE id = ?;";
 	//private static final String SELECT_CONTENTS = "SELECT COUNT(*) FROM content WHERE LIMIT ";
 	private static final String COUNT_CONTENT = "SELECT COUNT(*) as total FROM content ORDER BY id DESC";
-	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ? AND AuthorId = ?;";
+	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ?;";
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
 	
@@ -152,16 +152,15 @@ public class ContentDAO {
 		}
 		return 0;
 	}
-	public boolean deleteContent(int id) throws SQLException {
-		boolean rowDeleted;
+	public void deleteContent(int id) throws SQLException {
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_CONTENT);) {
 			statement.setInt(1, id);
-			
-			System.out.println(statement);
-			rowDeleted = statement.executeUpdate() > 0;
+			//System.out.println(statement);
+			statement.executeUpdate();
+		}catch (SQLException e) {
+			connect.printSQLException(e);
 		}
-		return rowDeleted;
 	}
 
 	public boolean updateContent(Content content) throws SQLException {

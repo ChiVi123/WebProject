@@ -209,6 +209,11 @@ public class ContentServlet extends HttpServlet {
 
 	private void deleteContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
+		//response.sendRedirect("home");
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
+
+		contentDAO.deleteContent(id);
 		response.sendRedirect("home");
 	}
 

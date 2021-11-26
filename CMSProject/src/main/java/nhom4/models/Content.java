@@ -12,7 +12,9 @@ public class Content {
 	protected String sort;
 	protected int authorid;
 
-	public Content() {
+	public Content(int id) {
+		super();
+		this.id = id;
 	}
 	public Content(int id, String title, String brief, String content, String createdate, int authorid) {
 		super();

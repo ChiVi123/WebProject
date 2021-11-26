@@ -54,31 +54,31 @@
 		<br> <br> <br>
 		<ul class="pagination">
 			<c:if test="${ page != 1 }">
-				<a href="/CMSProject/home?page=${ page - 1 }" tabindex="-1"
+				<a href="/CMSProject/home?textsreach=${ textsreach }&&page=${ page - 1 }" tabindex="-1"
 					aria-disabled="true">&laquo;</a>
 			</c:if>
 			<c:forEach var="i" begin="1" end="${ totalPage }">
 				<c:choose>
 					<c:when test="${ page == i }">
-						<a class="active" href="/CMSProject/home?page=${ i }">${ i }</a>
+						<a class="active" href="/CMSProject/home?textsreach=${ textsreach }&&page=${ i }">${ i }</a>
 					</c:when>
 					<c:otherwise>
-						<a href="/CMSProject/home?page=${ i }">${ i }</a>
+						<a href="/CMSProject/home?textsreach=${ textsreach }&&page=${ i }">${ i }</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${ page < totalPage }">
-				<a href="/CMSProject/home?page=${page + 1}">&raquo;</a>
+				<a href="/CMSProject/home?textsreach=${ textsreach }&&page=${page + 1}">&raquo;</a>
 			</c:if>
 		</ul>
 	</div>
-	<script type="text/javascript" src="<c:url value="/resources/js/loading.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/loading.js" />"></script>
 	<script type="text/javascript">
-	Loading({
-		load: "load",
-		form: "formViewContent",
-	}, 5000);
-		
+		Loading({
+			load : "load",
+			form : "formViewContent",
+		}, 5000);
 	</script>
 </body>
 </html>

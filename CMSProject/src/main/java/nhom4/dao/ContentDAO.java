@@ -28,13 +28,8 @@ public class ContentDAO {
 	}
 
 	static ConnectDB connect = new ConnectDB();
-<<<<<<< HEAD
 
 	public List<Content> searchContents(String textsearch, int limit, int page) {
-=======
-	
-	public List<Content> searchContents(String textsearch,int limit, int page) {
->>>>>>> f502e527c04ec8e56653d32780bc42549d9a6f9d
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Content> listcontents = new ArrayList<>();
 		// Step 1: Establishing a Connection
@@ -159,7 +154,6 @@ public class ContentDAO {
 		}
 		return 0;
 	}
-<<<<<<< HEAD
 
 	public static int count(String textsearch) {
 		// Step 1: Establishing a Connection
@@ -183,24 +177,14 @@ public class ContentDAO {
 		return 0;
 	}
 
-	public boolean deleteContent(int id) throws SQLException {
-		boolean rowDeleted;
-		try (Connection connection = connect.getConnection();
-				PreparedStatement statement = connection.prepareStatement(DELETE_CONTENT);) {
-			statement.setInt(1, id);
-
-			System.out.println(statement);
-			rowDeleted = statement.executeUpdate() > 0;
-=======
 	public void deleteContent(int id) throws SQLException {
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_CONTENT);) {
 			statement.setInt(1, id);
-			//System.out.println(statement);
+			// System.out.println(statement);
 			statement.executeUpdate();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			connect.printSQLException(e);
->>>>>>> f502e527c04ec8e56653d32780bc42549d9a6f9d
 		}
 	}
 
@@ -219,5 +203,4 @@ public class ContentDAO {
 		}
 		return rowUpdated;
 	}
-
 }

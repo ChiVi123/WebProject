@@ -35,7 +35,7 @@
 		<br>
 	</div>
 	<script src="<c:url value="/resources/js/validator.js"/>"></script>
-	
+	<script src="<c:url value="/resources/js/login.js"/>"></script>
     <script>
         Validator({
             form: "#des",

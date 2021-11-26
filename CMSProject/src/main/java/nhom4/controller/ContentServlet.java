@@ -47,16 +47,14 @@ public class ContentServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		String action = request.getServletPath();
-		//String action = request.getPathInfo();
+		// String action = request.getPathInfo();
 		System.out.println(action);
 		try {
 			switch (action) {
 			case "/editmember":
 				showEditMemberForm(request, response);
-				break;
-			case "/searchcontent":
-				 listSearchContent(request, response);
 				break;
 			case "/updatemember":
 				updateMember(request, response);
@@ -76,7 +74,7 @@ public class ContentServlet extends HttpServlet {
 			case "/update":
 				updateContent(request, response);
 				break;
-			case "/login":				
+			case "/login":
 				login(request, response);
 				break;
 			case "/home":
@@ -122,49 +120,27 @@ public class ContentServlet extends HttpServlet {
 
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		int page = 1;
-		if (request.getParameter("page") != null && request.getParameter("page") != "")
-		{
-			page = Integer.parseInt(request.getParameter("page"));
-		}
-		int limit= 10;
-		int total= ContentDAO.count();
-		int totalPage= (int) Math.ceil((float)total / (float)limit);
-		/*
-		 * System.out.println(totalPage); System.out.println(total);
-		 */
-		List<Content> listcontent = contentDAO.selectContents(limit, page);
-		request.setAttribute("totalPage", totalPage);
-		request.setAttribute("listcontent", listcontent);
-		request.setAttribute("page", page);
-		request.setAttribute("idglobal", Common.ID_GLOBAL);
-		//System.out.println(Arrays.toString(listcontent.toArray()));
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
-		dispatcher.forward(request, response);
-	}
-	private void listSearchContent(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
 		String textsearch = request.getParameter("search");
-		System.out.println("search");
+		if(textsearch == null) {
+			textsearch = "";
+		}
 		int page = 1;
-		if (request.getParameter("page") != null && request.getParameter("page") != "")
-		{
+		if (request.getParameter("page") != null && request.getParameter("page") != "") {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		int limit= 10;
-		List<Content> list = contentDAO.selectContents(limit, page);
-		  int total = list.size();
-		int totalPage= (int) Math.ceil((float)total / (float)limit); 
-		List<Content> listcontent = contentDAO.searchContents(textsearch,limit,page);
-		for(Content item : listcontent) {
-			System.out.println(item.getCreateDate());
-		}
+		int limit = 10;
+		int total = ContentDAO.count(textsearch);
+		System.out.println(total);
+		int totalPage = (int) Math.ceil((float) total / (float) limit);
+		System.out.println(totalPage);
+		
+		List<Content> listcontent = contentDAO.searchContents(textsearch, limit, page);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("listcontent", listcontent);
 		request.setAttribute("page", page);
-		request.setAttribute("idglobal", Common.ID_GLOBAL);
+		request.setAttribute("idglobal", Common.idGlobal);
 		request.setAttribute("textsearch", textsearch);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
 		dispatcher.forward(request, response);
 	}
@@ -189,8 +165,8 @@ public class ContentServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String brief = request.getParameter("brief");
 		String content = request.getParameter("content");
-		
-		Content newContent = new Content(title, brief, content, Common.ID_GLOBAL);
+
+		Content newContent = new Content(title, brief, content, Common.idGlobal);
 		contentDAO.insertContent(newContent);
 		response.sendRedirect("home");
 	}
@@ -201,8 +177,8 @@ public class ContentServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String brief = request.getParameter("brief");
 		String content = request.getParameter("content");
-		  
-		Content editContent = new Content(id, title, brief, content, Common.ID_GLOBAL);
+
+		Content editContent = new Content(id, title, brief, content, Common.idGlobal);
 		contentDAO.updateContent(editContent);
 		response.sendRedirect("home");
 	}
@@ -225,12 +201,9 @@ public class ContentServlet extends HttpServlet {
 			request.setAttribute("mess", "Wrong email or password");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else {
-			// request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
-			Common.ID_GLOBAL = loginMember.getId();
+			Common.idGlobal = loginMember.getId();
 			response.sendRedirect("home");
 		}
-
 	}
 
-	
 }

@@ -8,10 +8,10 @@
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/ViewContent.css"/>" />
 </head>
-<body class="preloading">
-<!-- loading -->
-<div class="load">Loading</div>
-<!-- viewcontent -->
+<body>
+	<!-- loading -->
+	<div id="load">Loading</div>
+	<!-- viewcontent -->
 	<div id="formViewContent">
 		<h1>View Content</h1>
 		<hr style="opacity: 0.5">
@@ -39,9 +39,11 @@
 							</td>
 							<td>
 								<div class="group-flex">
-									<div style="height:40px;padding-top:10%">
-										<a class="link" id="style" href="edit?id=<c:out value="${content.id}" />">Edit</a>
-										<a class="link" id="style" href="delete?id=<c:out value="${content.id}" />">Delete</a>
+									<div style="height: 40px; padding-top: 10%">
+										<a class="link" id="style"
+											href="edit?id=<c:out value="${content.id}" />">Edit</a> <a
+											class="link" id="style"
+											href="delete?id=<c:out value="${content.id}" />">Delete</a>
 									</div>
 								</div>
 							</td>
@@ -52,22 +54,31 @@
 		<br> <br> <br>
 		<ul class="pagination">
 			<c:if test="${ page != 1 }">
-					<a href="/CMSProject/home?page=${ page - 1 }" tabindex="-1" aria-disabled="true">&laquo;</a>
+				<a href="/CMSProject/home?page=${ page - 1 }" tabindex="-1"
+					aria-disabled="true">&laquo;</a>
 			</c:if>
 			<c:forEach var="i" begin="1" end="${ totalPage }">
 				<c:choose>
 					<c:when test="${ page == i }">
 						<a class="active" href="/CMSProject/home?page=${ i }">${ i }</a>
 					</c:when>
-				<c:otherwise>
-					<a  href="/CMSProject/home?page=${ i }">${ i }</a>
-				</c:otherwise>			
+					<c:otherwise>
+						<a href="/CMSProject/home?page=${ i }">${ i }</a>
+					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${ page < totalPage }">
-					<a  href="/CMSProject/home?page=${page + 1}">&raquo;</a>
-			</c:if>			
+				<a href="/CMSProject/home?page=${page + 1}">&raquo;</a>
+			</c:if>
 		</ul>
 	</div>
+	<script type="text/javascript" src="<c:url value="/resources/js/loading.js" />"></script>
+	<script type="text/javascript">
+	Loading({
+		load: "load",
+		form: "formViewContent",
+	}, 5000);
+		
+	</script>
 </body>
 </html>

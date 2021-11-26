@@ -15,33 +15,33 @@ public class ContentDAO {
 	private static final String INSERT_CONTENT = "INSERT INTO Content"
 			+ "  (Title, Brief, Content, CreateDate, UpdateTime, AuthorId) VALUES " + " (?, ?, ?, now(), now(), ?);";
 	private static final String SELECT_CONTENT = "SELECT * FROM Content WHERE id = ?;";
-	//private static final String SELECT_CONTENTS = "SELECT COUNT(*) FROM content WHERE LIMIT ";
+	// private static final String SELECT_CONTENTS = "SELECT COUNT(*) FROM content
+	// WHERE LIMIT ";
 	private static final String COUNT_CONTENT = "SELECT COUNT(*) as total FROM content ORDER BY id DESC";
 	private static final String DELETE_CONTENT = "DELETE FROM Content WHERE id = ? AND AuthorId = ?;";
 	private static final String UPDATE_CONTENT = "UPDATE Content "
 			+ " SET Title = ?, Brief = ?, Content = ?, UpdateTime = now() WHERE id = ? AND AuthorId = ?;";
-	
-	/*private static final String SEARCH_CONTENT = "SELECT * From Content Where  Title LIKE   ? OR Brief LIKE ? OR Content LIKE ?;";*/
-	
+
+	private static final String SEARCH_CONTENT = "SELECT COUNT(*) as total From Content Where  Title LIKE   ? OR Brief LIKE ? OR Content LIKE ? ORDER BY id DESC;";
+
 	public ContentDAO() {
 	}
 
 	static ConnectDB connect = new ConnectDB();
-	public List<Content> searchContents(String textsearch,int limit, int page) {
+
+	public List<Content> searchContents(String textsearch, int limit, int page) {
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Content> listcontents = new ArrayList<>();
 		// Step 1: Establishing a Connection
-		int offset=(page - 1) * limit;
-		String SEARCH_CONTENTS="SELECT * From Content Where  Title LIKE   ? OR Brief LIKE ? OR Content LIKE ?" +"LIMIT "  + Integer.toString(limit) + " OFFSET " + Integer.toString(offset);
-		System.out.println(SEARCH_CONTENTS);
-		
-	
-		try (Connection connection = connect.getConnection();
+		int offset = (page - 1) * limit;
+		String SEARCH_CONTENTS = "SELECT * From Content Where  Title LIKE   ? OR Brief LIKE ? OR Content LIKE ?"
+				+ " LIMIT " + Integer.toString(limit) + " OFFSET " + Integer.toString(offset) + ";";
 
+		try (Connection connection = connect.getConnection();
 				// Step 2:Create a statement using connection object
-			PreparedStatement statement = connection.prepareStatement(SEARCH_CONTENTS);) {
-			statement.setString(1, '%'+textsearch +'%');
-			statement.setString(2,'%' +textsearch+'%');
+				PreparedStatement statement = connection.prepareStatement(SEARCH_CONTENTS);) {
+			statement.setString(1, '%' + textsearch + '%');
+			statement.setString(2, '%' + textsearch + '%');
 			statement.setString(3, textsearch);
 			System.out.println(statement);
 			// Step 3: Execute the query or update query
@@ -55,7 +55,7 @@ public class ContentDAO {
 				String content = rs.getString("Content");
 				String createdate = rs.getString("CreateDate");
 				int authorid = rs.getInt("AuthorId");
-				listcontents.add(new Content(id,title, brief, content, createdate,authorid));
+				listcontents.add(new Content(id, title, brief, content, createdate, authorid));
 			}
 		} catch (SQLException e) {
 			connect.printSQLException(e);
@@ -63,7 +63,6 @@ public class ContentDAO {
 		return listcontents;
 	}
 
-	
 	public void insertContent(Content content) throws SQLException {
 		// try-with-resource statement will auto close the connection.
 		try (Connection connection = connect.getConnection();
@@ -104,16 +103,18 @@ public class ContentDAO {
 		}
 		return select;
 	}
+
 	public List<Content> selectContents(int limit, int page) {
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Content> listcontents = new ArrayList<>();
-		
+
 		// Step 1: Establishing a Connection
-		int offset=(page - 1) * limit;
-		String SELECT_CONTENTS="SELECT * FROM content LIMIT " + Integer.toString(limit) + " OFFSET " + Integer.toString(offset);
+		int offset = (page - 1) * limit;
+		String SELECT_CONTENTS = "SELECT * FROM content LIMIT " + Integer.toString(limit) + " OFFSET "
+				+ Integer.toString(offset);
 		System.out.println(SELECT_CONTENTS);
 
-		try (Connection connection = connect.getConnection(); 
+		try (Connection connection = connect.getConnection();
 				// Step 2:Create a statement using connection object
 				PreparedStatement statement = connection.prepareStatement(SELECT_CONTENTS);) {
 			// Step 3: Execute the query or update query
@@ -134,12 +135,13 @@ public class ContentDAO {
 		}
 		return listcontents;
 	}
+
 	public static int count() {
 		// Step 1: Establishing a Connection
 		try (Connection connection = connect.getConnection();
 
 				// Step 2:Create a statement using connection object
-			PreparedStatement statement = connection.prepareStatement(COUNT_CONTENT);) {
+				PreparedStatement statement = connection.prepareStatement(COUNT_CONTENT);) {
 			System.out.println(statement);
 			// Step 3: Execute the query or update query
 			ResultSet rs = statement.executeQuery();
@@ -152,12 +154,35 @@ public class ContentDAO {
 		}
 		return 0;
 	}
+
+	public static int count(String textsearch) {
+		// Step 1: Establishing a Connection
+		try (Connection connection = connect.getConnection();
+
+				// Step 2:Create a statement using connection object
+				PreparedStatement statement = connection.prepareStatement(SEARCH_CONTENT);) {
+			statement.setString(1, '%' + textsearch + '%');
+			statement.setString(2, '%' + textsearch + '%');
+			statement.setString(3, textsearch);
+			System.out.println(statement);
+			// Step 3: Execute the query or update query
+			ResultSet rs = statement.executeQuery();
+
+			// Step 4: Process the ResultSet object.
+			rs.next();
+			return rs.getInt("total");
+		} catch (SQLException e) {
+			connect.printSQLException(e);
+		}
+		return 0;
+	}
+
 	public boolean deleteContent(int id) throws SQLException {
 		boolean rowDeleted;
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_CONTENT);) {
 			statement.setInt(1, id);
-			
+
 			System.out.println(statement);
 			rowDeleted = statement.executeUpdate() > 0;
 		}
@@ -173,7 +198,7 @@ public class ContentDAO {
 			statement.setString(3, content.getContent());
 			statement.setInt(4, content.getId());
 			statement.setInt(5, content.getAuthorId());
-			
+
 			System.out.println(statement);
 			rowUpdated = statement.executeUpdate() > 0;
 		}

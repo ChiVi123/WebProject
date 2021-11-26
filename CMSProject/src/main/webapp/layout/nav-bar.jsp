@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div id="navBar">
-	<form id= "itemsearch" action="searchcontent" method="post">
+	<form id= "itemsearch" action="home" method="post">
 		<div id="wrapperSearch">
 			<input type="text" name="search" placeholder="Search... " value="<c:out value='${textsearch}'/>" >    
 			

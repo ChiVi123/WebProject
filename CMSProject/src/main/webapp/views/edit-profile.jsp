@@ -88,10 +88,7 @@
 					Validator.isRequired("#description"),
 					Validator.checkLength("#description", 0, 1000), ],
 		});
-		Reset({
-			form : "#des",
-			resetButton : "#reset",
-		});
+		
 	</script>
 
 </body>

@@ -27,6 +27,7 @@ public class ContentDAO {
 	}
 
 	static ConnectDB connect = new ConnectDB();
+	
 	public List<Content> searchContents(String textsearch,int limit, int page) {
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Content> listcontents = new ArrayList<>();

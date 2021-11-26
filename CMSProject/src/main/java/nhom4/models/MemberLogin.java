@@ -38,11 +38,14 @@ public class MemberLogin {
 
 	// Lưu thông tin người dùng vào Cookie.
 	public static void storeUserCookie(HttpServletResponse response, Member user) {
-		System.out.println("Store user cookie");
-		Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, user.getUsername());
+	
+		Cookie cookieEmail = new Cookie(ATT_NAME_USER_NAME, user.getEmail());
+		Cookie cookiePass = new Cookie(ATT_NAME_USER_NAME, user.getPassword());
 		// 1 ngày (Đã đổi ra giây)
-		cookieUserName.setMaxAge(24 * 60 * 60);
-		response.addCookie(cookieUserName);
+		 cookieEmail.setMaxAge(24 * 60 * 60);
+		 
+		response.addCookie(cookieEmail);
+		response.addCookie(cookiePass);
 	}
 
 	public static String getUserNameInCookie(HttpServletRequest request) {

@@ -16,15 +16,15 @@
 		<hr>
 		<p class= "error">${mess}</p>
 		<div class="form-group">
-		<input id="email" class="email" name="email" type="email" placeholder="E-mail">			
+		<input id="email" class="email" name="email" type="email" placeholder="E-mail" value="${email}">			
 		<span class="text-message"></span>
 		</div>
 		<div class="form-group">
-		<input id="pass" class="pass" name="pass" type="password" placeholder="Password">
+		<input id="pass" class="pass" name="pass" type="password" placeholder="Password" value="${password}">
 		<span class="text-message"></span>
 		</div>
 		<div class="check">
-			<input class="checkbox" type="checkbox" placeholder="Enter password" id ="rememberMe" value ='IsRememberMe'> Remember me
+			<input class="checkbox" type="checkbox" name ="remember" placeholder="Enter password" id ="rememberMe" value ='IsRememberMe'> Remember me
 		</div>
 		<div class="form-group">
 		<button onclick="lsRememberMe()">Login</button >

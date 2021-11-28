@@ -19,14 +19,14 @@ import nhom4.utilities.Common;
  * Servlet implementation class ReadContentCrtler
  */
 @WebServlet(name = "ReadContentCtrler", urlPatterns = { "/home" })
-public class ReadContentCtrler extends HttpServlet {
+public class HomeCtrler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ContentDAO contentDAO;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ReadContentCtrler() {
+	public HomeCtrler() {
 		super();
 		contentDAO = new ContentDAO();
 		// TODO Auto-generated constructor stub
@@ -82,7 +82,7 @@ public class ReadContentCtrler extends HttpServlet {
 		}
 		int limit = 10;
 
-		int total = ContentDAO.count(textsearch);
+		int total = contentDAO.count(textsearch);
 		int totalPage = (int) Math.ceil((float) total / (float) limit);
 
 		List<Content> listcontent = contentDAO.searchContents(textsearch, limit, page);

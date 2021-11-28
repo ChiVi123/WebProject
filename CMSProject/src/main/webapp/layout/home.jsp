@@ -38,16 +38,17 @@ aside {
 	float: left;
 	position: fixed;
 	top: 46px;
-	width: 20%;
+	width: 16%;
 	height: 100%;
 	background-color: var(--theme-header-navbar);
 }
 
 section {
 	float: left;
-	width: 80%;
+	width: 84%;
 	margin-top: 46px;
-	margin-left: 20%;
+	margin-left: 16%;
+	padding-right: 20px;
 }
 </style>
 </head>

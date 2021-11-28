@@ -77,6 +77,10 @@
 	border-width: 1px;
 }
 
+#subNav li:hover{
+	background: #ccc;
+}
+
 .show {
 	display: block !important;
 }

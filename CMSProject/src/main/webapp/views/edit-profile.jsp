@@ -62,8 +62,7 @@
 				<div class="form-group">
 					<label class="labeltext"> Description </label> <br>
 					<textarea class="form-control" id="description" cols="50" rows="6"
-						name="description" autofocus> <c:out
-							value='${member.description}' /> </textarea>
+						name="description" autofocus><c:out	value='${member.description}' /></textarea>
 					<span class="text-message"> </span>
 				</div>
 
@@ -88,7 +87,6 @@
 					Validator.isRequired("#description"),
 					Validator.checkLength("#description", 0, 1000), ],
 		});
-		
 	</script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/loading.js" />"></script>

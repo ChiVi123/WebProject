@@ -1,14 +1,12 @@
 package nhom4.models;
 
-import java.time.LocalDateTime;
-
 public class Content {
 	protected int id;
 	protected String title;
 	protected String brief;
 	protected String content;
 	protected String createdate;
-	protected LocalDateTime updatetime;
+	protected String updatetime;
 	protected String sort;
 	protected int authorid;
 
@@ -16,13 +14,14 @@ public class Content {
 		super();
 		this.id = id;
 	}
+
 	public Content(int id, String title, String brief, String content, String createdate, int authorid) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.brief = brief;
 		this.content = content;
-		this.createdate= createdate;
+		this.createdate = createdate;
 		this.authorid = authorid;
 	}
 
@@ -75,20 +74,20 @@ public class Content {
 		this.content = content;
 	}
 
-	public String getCreateDate() {
-		return this.createdate;
+	public String getCreatedate() {
+		return createdate;
 	}
 
-	public void setCreateDate(String createDate) {
-		this.createdate = createDate;
+	public void setCreatedate(String createdate) {
+		this.createdate = createdate;
 	}
 
-	public LocalDateTime getUpdateTime() {
+	public String getUpdatetime() {
 		return updatetime;
 	}
 
-	public void setUpdateTime(LocalDateTime updateTime) {
-		updatetime = updateTime;
+	public void setUpdatetime(String updatetime) {
+		this.updatetime = updatetime;
 	}
 
 	public String getSort() {
@@ -111,6 +110,5 @@ public class Content {
 	public String toString() {
 		return "Content [id=" + id + ", title=" + title + ", brief=" + brief + ", createdate=" + createdate + "]";
 	}
-	
 
 }

@@ -13,19 +13,25 @@ public class Member {
 	private String Description;
 	private LocalDateTime CreateDate;
 	private LocalDateTime UpdateTime;
-	
 
+	public Member(int id) {
+		super();
+		this.id = id;
+	}
+	
 	public Member(String email, String pass) {
 		super();
 		this.Email = email;
-		this.Password=pass;
+		this.Password = pass;
 	}
+
 	public Member(String user, String email, String pass) {
 		super();
-		this.Username=user;
+		this.Username = user;
 		this.Email = email;
-		this.Password=pass;
+		this.Password = pass;
 	}
+
 	public Member(int id, String firstname, String lastname, String phone, String description) {
 		super();
 		this.id = id;
@@ -34,7 +40,8 @@ public class Member {
 		this.Phone = phone;
 		this.Description = description;
 	}
-	public Member(int id, String firstname, String lastname,String email ,String phone, String description) {
+
+	public Member(int id, String firstname, String lastname, String email, String phone, String description) {
 		super();
 		this.id = id;
 		this.Firstname = firstname;
@@ -43,6 +50,7 @@ public class Member {
 		this.Phone = phone;
 		this.Description = description;
 	}
+
 	public int getId() {
 		return id;
 	}

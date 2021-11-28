@@ -66,8 +66,9 @@ public class UpdateContentCtrler extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Content existingContent = contentDAO.selectContent(id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.CONTENT_TILES);
 		request.setAttribute("content", existingContent);
+		request.setAttribute("idglobal", Common.idGlobal);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.CONTENT_TILES);
 		dispatcher.forward(request, response);
 	}
 	

@@ -70,8 +70,9 @@ public class UpdateMemberCtrler extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Member existingMember = memberDAO.selectMember(id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
 		request.setAttribute("member", existingMember);
+		request.setAttribute("idglobal", Common.idGlobal);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
 		dispatcher.forward(request, response);
 	}
 	

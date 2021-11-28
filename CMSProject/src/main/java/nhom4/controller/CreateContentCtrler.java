@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nhom4.models.Content;
-import nhom4.models.Member;
 import nhom4.dao.ContentDAO;
 import nhom4.utilities.Common;
 
@@ -69,6 +68,7 @@ public class CreateContentCtrler extends HttpServlet {
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setAttribute("idglobal", Common.idGlobal);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.CONTENT_TILES);
 		dispatcher.forward(request, response);
 	}

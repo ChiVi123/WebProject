@@ -34,9 +34,7 @@
 							<td><c:out value="${content.id}" /></td>
 							<td><c:out value="${content.title}" /></td>
 							<td><c:out value="${content.brief}" /></td>
-							<td>
-								<%-- <c:out value="${content.createdate}" /> --%>
-							</td>
+							<td><c:out value="${content.createdate}" /></td>
 							<td>
 								<div class="group-flex">
 									<div style="height: 40px; padding-top: 10%">
@@ -51,7 +49,6 @@
 					</c:forEach>
 			</table>
 		</div>
-		<br> <br> <br>
 		<ul class="pagination">
 			<c:if test="${ page != 1 }">
 				<a href="/CMSProject/home?textsearch=${ textsearch }&page=${ page - 1 }" tabindex="-1"

@@ -50,13 +50,13 @@
                 Validator.checkLength("#username", 3, 30),
                 Validator.isRequired("#Email","Please enter your email!!!"),
                 Validator.minLength("#Email", 5),
-                Validator.isEmail("#Email", "Sang dbrr!!!"),
+                Validator.isEmail("#Email", "Is not email"),
                 Validator.isRequired("#password","Please enter your password!!!"),
                 Validator.checkLength("#password", 8, 30),
                 Validator.isRequired("#repass","Please enter your password!!!"),
                 Validator.isComfirmed("#repass", function(){
                 	return document.querySelector("#des #password").value;
-                }, "Phúc du Sang!!!"),
+                }, "Wrong password"),
                 /* Validator.checkLength("#repass", 8, 30), */
             ],
         });

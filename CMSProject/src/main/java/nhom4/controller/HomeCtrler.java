@@ -40,6 +40,8 @@ public class HomeCtrler extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		String action = request.getServletPath();
 		// String action = request.getPathInfo();
 		System.out.println(action);
@@ -67,13 +69,15 @@ public class HomeCtrler extends HttpServlet {
 	private void listContent(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		String textsearch = request.getParameter("search");
-		if (textsearch == null) {
+		String find;
+		if (request.getParameter("search") == null) {
 			if (request.getParameter("textsearch") != "" && request.getParameter("textsearch") != null) {
-				textsearch = request.getParameter("textsearch");
+				find = request.getParameter("textsearch");
 			} else {
-				textsearch = "";
+				find = "";
 			}
+		} else {
+			find = request.getParameter("search");
 		}
 
 		int page = 1;
@@ -82,15 +86,15 @@ public class HomeCtrler extends HttpServlet {
 		}
 		int limit = 10;
 
-		int total = contentDAO.count(textsearch);
+		int total = contentDAO.count(find);
 		int totalPage = (int) Math.ceil((float) total / (float) limit);
 
-		List<Content> listcontent = contentDAO.searchContents(textsearch, limit, page);
+		List<Content> listcontent = contentDAO.searchContents(find, limit, page);
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("listcontent", listcontent);
 		request.setAttribute("page", page);
 		request.setAttribute("idglobal", Common.idGlobal);
-		request.setAttribute("textsearch", textsearch);
+		request.setAttribute("textsearch", find);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.HOME_TILES);
 		dispatcher.forward(request, response);

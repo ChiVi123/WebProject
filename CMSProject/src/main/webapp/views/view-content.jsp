@@ -75,7 +75,7 @@
 		Loading({
 			load : "#load",
 			form : "#formViewContent",
-		}, 5000);
+		}, 1000);
 	</script>
 </body>
 </html>

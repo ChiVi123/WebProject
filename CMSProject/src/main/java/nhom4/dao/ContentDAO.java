@@ -68,7 +68,8 @@ public class ContentDAO {
 		int offset = (page - 1) * limit;
 		String SEARCH_CONTENTS = "SELECT * From Content Where  Title LIKE ? OR Brief LIKE ? OR Content LIKE ?"
 				+ " LIMIT ? OFFSET ?;";
-
+		//[1;10] : 1
+		//[11; 21] : 2
 		try (Connection connection = connect.getConnection();
 				// Step 2:Create a statement using connection object
 				PreparedStatement statement = connection.prepareStatement(SEARCH_CONTENTS);) {

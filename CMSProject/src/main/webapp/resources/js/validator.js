@@ -6,6 +6,7 @@
 function Validator(options) {
 	//the con duoc chua trong the cha theo CSS selector
 	function getParent(element, selector) {
+		
 		while (element.parentElement) {
 			if (element.parentElement.matches(selector)) {
 				return element.parentElement;
@@ -149,8 +150,6 @@ Validator.checkLength = function(selector, min, max, message) {
 		selector: selector,
 		test: function(value) {
 			var range = !!(value.length >= min && value.length <= max);
-			console.log(value.length);
-			console.log(range);
 			return range ? undefined : message || `Nhap lon hon ${min} ky tu va nho hon ${max} ky tu`;
 		},
 	};

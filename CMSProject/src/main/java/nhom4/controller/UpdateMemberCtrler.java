@@ -39,6 +39,8 @@ public class UpdateMemberCtrler extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		String action = request.getServletPath();
 		// String action = request.getPathInfo();
 		System.out.println(action);
@@ -71,7 +73,7 @@ public class UpdateMemberCtrler extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Member existingMember = memberDAO.selectMember(id);
 		request.setAttribute("member", existingMember);
-		request.setAttribute("idglobal", Common.idGlobal);
+		//request.setAttribute("idglobal", Common.idGlobal);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Common.PROFILE_TILES);
 		dispatcher.forward(request, response);
 	}

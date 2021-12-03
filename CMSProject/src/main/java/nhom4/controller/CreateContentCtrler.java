@@ -39,6 +39,8 @@ public class CreateContentCtrler extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		String action = request.getServletPath();
 		// String action = request.getPathInfo();
 		System.out.println(action);

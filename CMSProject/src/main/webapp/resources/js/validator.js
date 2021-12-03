@@ -132,6 +132,17 @@ Validator.isEmail = function (selector, message) {
     },
   };
 };
+Validator.isphonenumber = function (selector, message)
+{
+  
+   return {
+    selector: selector,
+    test: function (value) {
+      var regex = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
+      return regex.test(value) ? undefined : message || "Invalid phone number";
+    },
+  };
+};
 
 Validator.checkLength = function (selector, min, max, message) {
   return {

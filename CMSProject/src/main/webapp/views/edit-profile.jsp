@@ -79,13 +79,14 @@
 			formGroup : ".form-group",
 			errorSelector : ".text-message",
 			rules : [ Validator.isRequired("#firstname"),
-					Validator.checkLength("#firstname", 3, 30),
+					Validator.checkLength("#firstname", 3, 30,"First Name must more than 3 characters and less than 30 characters"),
 					Validator.isRequired("#lastname"),
-					Validator.checkLength("#lastname", 3, 30),
+					Validator.checkLength("#lastname", 3, 30, "Last Name must more than 3 characters and less than 30 characters"),
 					Validator.isRequired("#phone"),
-					Validator.checkLength("#phone", 9, 13),
+					Validator.checkLength("#phone", 9, 13,"Phone must more than 9 characters and less than 13 characters"),
+					Validator.isphonenumber("#phone","Invalid Phone Number"),
 					Validator.isRequired("#description"),
-					Validator.checkLength("#description", 0, 1000), ],
+					Validator.checkLength("#description", 0, 1000),"Description must less than 1000 characters" ],
 		});
 	</script>
 	<script type="text/javascript"

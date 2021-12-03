@@ -68,7 +68,7 @@ public class LoginCtrler extends HttpServlet {
 		// doGet(request, response);
 
 		String email = request.getParameter("email");
-		String pass = request.getParameter("pass");
+		String pass = MD5.getMD5(request.getParameter("pass"));
 
 		Member loginMember = memberDAO.login(email, pass);
 
@@ -79,7 +79,6 @@ public class LoginCtrler extends HttpServlet {
 			Common.idGlobal = loginMember.getId();
 			response.sendRedirect("home");
 		}
-		// request.getRequestDispatcher(Common.HOME_TILES).forward(request, response);
 	}
 
 }

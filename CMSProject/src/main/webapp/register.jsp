@@ -49,11 +49,15 @@
                 Validator.isRequired("#username","Please enter username!!!"),
                 Validator.checkLength("#username", 3, 30),
                 Validator.isRequired("#Email","Please enter your email!!!"),
-                Validator.checkLength("#Email", 5),
+                Validator.minLength("#Email", 5),
+                Validator.isEmail("#Email", "Sang dbrr!!!"),
                 Validator.isRequired("#password","Please enter your password!!!"),
                 Validator.checkLength("#password", 8, 30),
                 Validator.isRequired("#repass","Please enter your password!!!"),
-                Validator.checkLength("#repass", 8, 30),
+                Validator.isComfirmed("#repass", function(){
+                	return document.querySelector("#des #password").value;
+                }, "Phúc du Sang!!!"),
+                /* Validator.checkLength("#repass", 8, 30), */
             ],
         });
     </script>

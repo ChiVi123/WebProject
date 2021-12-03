@@ -65,29 +65,19 @@ public class RegisterCtrler extends HttpServlet {
 		// doGet(request, response);
 		String user = request.getParameter("user");
 		String email = request.getParameter("email");
-		String pass = request.getParameter("pass");
-		String re_pass = request.getParameter("repass");
-		// Member a=member.checkMember(email);
-		/*
-		 * if(a == null) { request.setAttribute("mess",
-		 * "That email is taken. Please try another one");
-		 * request.getRequestDispatcher("register.jsp").forward(request, response); }
-		 * else
-		 */
-		if (!pass.equals(re_pass)) {
-			request.setAttribute("mess", "Those passwords didn't match");
+		String pass = MD5.getMD5(request.getParameter("pass"));
+		MemberDAO member = new MemberDAO();
+		Member acc= member.checkMember(email);
+		System.out.println(pass);
+		
+		if(acc == null) {
+			member.register(user,email,pass);
+			response.sendRedirect("index.jsp");
+		}else {
+			request.setAttribute("mess", "That email is taken. Please try another one");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
-		} else {
-			MemberDAO member = new MemberDAO();
-			Member acc= member.checkMember(email);
-			if(acc == null) {
-				member.register(user,email,pass);
-				response.sendRedirect("index.jsp");
-			}else {
-				request.setAttribute("mess", "That email is taken. Please try another one");
-				request.getRequestDispatcher("register.jsp").forward(request, response);
-			}
 		}
+
 	}
 
 }

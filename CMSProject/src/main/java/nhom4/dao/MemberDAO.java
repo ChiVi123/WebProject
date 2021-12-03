@@ -12,7 +12,7 @@ public class MemberDAO {
 			+ " SET Firstname = ?, Lastname = ?, Phone = ?, Description = ? WHERE id = ?;";
 	private static final String SELECT_MEMBER = "SELECT Firstname,Lastname, Email, Phone, Description  FROM Member WHERE id = ?;";
 	private static final String SELECT_MEMBERLOGIN = "SELECT * FROM member WHERE Email = ? AND Password = ?;";
-	private static final String SELECT_MEMBERCHECK = "SELECT COUNT(*) as total FROM member WHERE Email= ?;";
+	private static final String SELECT_MEMBERCHECK = "SELECT * FROM member WHERE Email= ?;";
 	private static final String INSERT_MEMBER = "INSERT INTO member"
 			+ " (Username, Email, Password, CreateDate, UpdateTime) VALUES (?, ?, ?, now(), now());";
 
@@ -76,29 +76,29 @@ public class MemberDAO {
 	}
 
 	// kiem tra trung email
-	public boolean checkMember(String email) {
-		boolean rowEmail = false;
+	public Member checkMember(String email) {
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(SELECT_MEMBERCHECK);) {
 			statement.setString(1, email);
 			ResultSet rs = statement.executeQuery();
-			rs.next();
-			rowEmail = rs.getInt("total") == 0;
+			while(rs.next())
+			{
+				return new Member(rs.getString(1),rs.getString(2),rs.getString(3));
+			}
+			
 		} catch (SQLException e) {
 			connect.printSQLException(e);
 		}
-		return rowEmail;
+		return null;
 	}
 
 	// register
-	public void register(Member member) throws SQLException {
+	public void register (String user, String email, String pass) throws SQLException {
 		try (Connection connection = connect.getConnection();
 				PreparedStatement statement = connection.prepareStatement(INSERT_MEMBER)) {
-			statement.setString(1, member.getUsername());
-			statement.setString(2, member.getEmail());
-			statement.setString(3, member.getPassword());
-
-			System.out.println(statement);
+			statement.setString(1, user);
+			statement.setString(2, email);
+			statement.setString(3, pass);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			connect.printSQLException(e);

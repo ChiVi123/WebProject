@@ -67,21 +67,26 @@ public class RegisterCtrler extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		String re_pass = request.getParameter("repass");
-		MemberDAO member = new MemberDAO();
 		// Member a=member.checkMember(email);
 		/*
 		 * if(a == null) { request.setAttribute("mess",
 		 * "That email is taken. Please try another one");
 		 * request.getRequestDispatcher("register.jsp").forward(request, response); }
 		 * else
-		 */if (!pass.equals(re_pass)) {
-			request.setAttribute("mess", "Those passwords didn't match. Please try another one");
+		 */
+		if (!pass.equals(re_pass)) {
+			request.setAttribute("mess", "Those passwords didn't match");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
-			// response.sendRedirect("register.jsp");
 		} else {
-			Member acc = new Member(user, email, pass);
-			member.register(acc);
-			response.sendRedirect("index.jsp");
+			MemberDAO member = new MemberDAO();
+			Member acc= member.checkMember(email);
+			if(acc == null) {
+				member.register(user,email,pass);
+				response.sendRedirect("index.jsp");
+			}else {
+				request.setAttribute("mess", "That email is taken. Please try another one");
+				request.getRequestDispatcher("register.jsp").forward(request, response);
+			}
 		}
 	}
 

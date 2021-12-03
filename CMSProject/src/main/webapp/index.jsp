@@ -14,7 +14,7 @@
 		<br>
 		<br>
 		<hr>
-		<p class= "error">${mess}</p>
+		<div style="font-family:courier;color:red;">${mess}</div>
 		<div class="form-group">
 		<input id="email" class="email" name="email" type="email" placeholder="E-mail" value="${email}">			
 		<span class="text-message"></span>

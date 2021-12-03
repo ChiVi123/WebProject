@@ -86,7 +86,7 @@
 					Validator.checkLength("#phone", 9, 13,"Phone must more than 9 characters and less than 13 characters"),
 					Validator.isphonenumber("#phone","Invalid Phone Number"),
 					Validator.isRequired("#description"),
-					Validator.checkLength("#description", 0, 1000),"Description must less than 1000 characters" ],
+					Validator.checkLength("#description", 0, 1000,"Description must less than 1000 characters") ],
 		});
 	</script>
 	<script type="text/javascript"

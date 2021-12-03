@@ -42,10 +42,10 @@
             formGroup: ".form-group",
             errorSelector: ".text-message",
             rules: [
-                Validator.isRequired("#email"),
+                Validator.isRequired("#email","Please enter your email!!!"),
                 Validator.checkLength("#email", 5, 50),
                 Validator.isEmail("#email","error"),
-                Validator.isRequired("#pass"),
+                Validator.isRequired("#pass","Please enter your password!!!"),
                 Validator.checkLength("#pass", 8, 30),                     
             ],
         });

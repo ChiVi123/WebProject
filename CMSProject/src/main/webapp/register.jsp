@@ -14,7 +14,7 @@
 		<br>
 		<br>
 		<hr>
-		<p class= "error">${mess}</p>
+		<p style="font-family:courier;color:red;">${mess}</p>
 		<div class="form-group">
 		<input id="username" class="user" name="user" type="text" placeholder="User name">
 		<span class="text-message"></span>
@@ -46,13 +46,13 @@
             formGroup: ".form-group",
             errorSelector: ".text-message",
             rules: [
-                Validator.isRequired("#username"),
+                Validator.isRequired("#username","Please enter username!!!"),
                 Validator.checkLength("#username", 3, 30),
-                Validator.isRequired("#Email"),
-                Validator.checkLength("#Email", 5, NA),
-                Validator.isRequired("#password"),
+                Validator.isRequired("#Email","Please enter your email!!!"),
+                Validator.checkLength("#Email", 5),
+                Validator.isRequired("#password","Please enter your password!!!"),
                 Validator.checkLength("#password", 8, 30),
-                Validator.isRequired("#repass"),
+                Validator.isRequired("#repass","Please enter your password!!!"),
                 Validator.checkLength("#repass", 8, 30),
             ],
         });

@@ -23,6 +23,8 @@
 
 .form-group.invalid .text-message {
   color: red;
+  text-align: left;
+  margin-left: 15px;
 }
 .style {
 	color: rgb(60, 60, 60);

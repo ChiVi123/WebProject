@@ -1,2 +1,2 @@
 # WebProject
-Do an lap trinh web, Content Management Systemt
+Do an lap trinh web, Content Management System
